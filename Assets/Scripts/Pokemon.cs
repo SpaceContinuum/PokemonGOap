@@ -1,5 +1,6 @@
 ﻿public class Pokemon : GAgent
 {
+    private int hungerMeter = 100;
 
     new void Start()
     {
@@ -16,8 +17,8 @@
         // Add it to the goals
         goals.Add(s2, 5);
 
-        // Set up the subgoal "isHome"
-        SubGoal s3 = new SubGoal("isHome", 1, true);
+        // Set up the subgoal "isHiding"
+        SubGoal s3 = new SubGoal("isHiding", 1, true);
         // Add it to the goals
         goals.Add(s3, 1);
     }
