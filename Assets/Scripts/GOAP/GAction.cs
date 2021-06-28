@@ -99,6 +99,11 @@ public abstract class GAction : MonoBehaviour {
         agent.SetDestination(trgt.position + buffer);
     }
 
+    public void TriggerAnimation(string type, float time)
+    {
+        //TODO:
+    }
+
     public abstract bool PrePerform();
     public abstract bool PostPerform();
 }
