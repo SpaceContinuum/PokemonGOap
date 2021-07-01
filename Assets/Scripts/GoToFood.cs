@@ -3,6 +3,13 @@
     public override bool PrePerform()
     {
 
+        // Find a free or occupied food
+        target = inventory.FindItemWithTag("Food");
+        // Check that we did indeed find food
+        if (target == null)
+            // No food
+            return false;
+        // There is food
         return true;
     }
 
