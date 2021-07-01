@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AgentVisualiser\GAgentVisual.cs" />
+    <Compile Include="Assets\Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\GOAP\GAction.cs" />
     <Compile Include="Assets\Scripts\GOAP\GAgent.cs" />
     <Compile Include="Assets\Scripts\GOAP\GInventory.cs" />
@@ -80,9 +81,11 @@
     <Compile Include="Assets\Scripts\Hospital actions\Patient.cs" />
     <Compile Include="Assets\Scripts\Hospital actions\Register.cs" />
     <Compile Include="Assets\Scripts\Hospital actions\Rest.cs" />
-    <Compile Include="Assets\Scripts\Hospital actions\Spawn.cs" />
     <Compile Include="Assets\Scripts\Hospital actions\UpdateWorld.cs" />
+    <Compile Include="Assets\Scripts\Pokemon.cs" />
     <Compile Include="Assets\Scripts\PokemonMovement.cs" />
+    <Compile Include="Assets\Scripts\PokemonTrained.cs" />
+    <Compile Include="Assets\Scripts\Spawn.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
