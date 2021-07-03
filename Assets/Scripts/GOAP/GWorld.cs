@@ -182,7 +182,7 @@ public sealed class GWorld {
         MoveObjectFromTo(f, fightFood, eatenFood);
     }
 
-    private Food GetClosestFood(GameObject obj, List<GameObject> foodList)
+    private Food GetClosestObject(GameObject obj, List<GameObject> foodList)
     {
         Food closestFood = null;
         float minDistance = Mathf.Infinity;
@@ -202,12 +202,12 @@ public sealed class GWorld {
 
     public Food GetClosestFreeFood(GameObject obj)
     {
-        return GetClosestFood(obj, freeFood);
+        return GetClosestObject(obj, freeFood);
     }
 
     Food GetClosestEatenFood(GameObject obj)
     {
-        return GetClosestFood(obj, eatenFood);
+        return GetClosestObject(obj, eatenFood);
     }
 
     public static GWorld Instance {
