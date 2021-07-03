@@ -11,7 +11,7 @@ public class Food : MonoBehaviour
     void Start()
     {
         spawner = FindObjectOfType<Spawn>();
-        Invoke("DestroyFood", destroyTimer);
+        //Invoke("DestroyFood", destroyTimer);
     }
 
     // Update is called once per frame
