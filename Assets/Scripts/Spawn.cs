@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour {
     public GameObject foodPrefab;
     // Number of patients to spawn
     public int numPokemon = 5;
-    private int foodCounter = 1;
+    //private int foodCounter = 1;
 
     Spawn Spawner = null;
 
@@ -36,8 +36,9 @@ public class Spawn : MonoBehaviour {
         if (numPokemon - 1 > foodCounter)
         {
             // Instantiate new food
-            Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
-            foodCounter++;
+            GameObject newFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+            //foodCounter++;
+            GWorld.Instance.AddFood(newFood);
         }
 
         // Invoke this method at random intervals
@@ -48,11 +49,6 @@ public class Spawn : MonoBehaviour {
     void Update()
     {
 
-    }
-
-    public void RemoveFood()
-    {
-        foodCounter--;
     }
 
    

@@ -7,31 +7,66 @@ public sealed class GWorld {
     private static readonly GWorld instance = new GWorld();
     // Our world states
     private static WorldStates world;
-    // Queue of patients
-    private static Queue<GameObject> patients;
-    // Queue of cubicles
-    private static Queue<GameObject> cubicles;
+    // A list of freely roaming pokemon
+    private static List<GameObject> freePokemon;
+    // A list of freely eating pokemon
+    private static List<GameObject> eatingPokemon;
+    // A list of pokemon who fight
+    private static List<GameObject> fightingPokemon;
+    // A list of "dead" pokemon
+    private static List<GameObject> stunnedPokemon;
+
+    // A list of freely available food
+    private static List<GameObject> freeFood;
+    // A list of food that is being eaten right now
+    private static List<GameObject> eatenFood;
+    // A list of food that is fought over
+    private static List<GameObject> fightFood;
+
 
     static GWorld() {
 
         // Create our world
         world = new WorldStates();
-        // Create patients array
-        patients = new Queue<GameObject>();
-        // Create cubicles array
-        cubicles = new Queue<GameObject>();
-        // Find all GameObjects that are tagged "Cubicle"
-        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cubicle");
-        // Then add them to the cubicles Queue
-        foreach (GameObject c in cubes) {
+        // Create pokemon lists
+        freePokemon =     new List<GameObject>();
+        eatingPokemon =   new List<GameObject>();
+        fightingPokemon = new List<GameObject>();
+        stunnedPokemon =  new List<GameObject>();
 
-            cubicles.Enqueue(c);
+        // Create food lists
+        freeFood =  new List<GameObject>();
+        eatenFood = new List<GameObject>();
+        fightFood = new List<GameObject>();
+
+        // Find all GameObjects that are tagged "Food"
+        GameObject[] fruits = GameObject.FindGameObjectsWithTag("Food");
+        // Then add them to the cubicles Queue
+        foreach (GameObject f in fruits) {
+
+            freeFood.Add(f);
         }
 
         // Inform the state
-        if (cubes.Length > 0) {
-            world.ModifyState("FreeCubicle", cubes.Length);
+        if (fruits.Length > 0) {
+            world.ModifyState("AvailableFood", fruits.Length);
         }
+
+        // Find all GameObjects that are tagged "Food"
+        GameObject[] pokemons = GameObject.FindGameObjectsWithTag("Pokemon");
+        // Then add them to the cubicles Queue
+        foreach (GameObject p in pokemons)
+        {
+
+            freePokemon.Add(p);
+        }
+
+        // Inform the state
+        if (pokemons.Length > 0)
+        {
+            world.ModifyState("AvailablePokemon", pokemons.Length);
+        }
+
 
         // Set the time scale in Unity
         Time.timeScale = 5.0f;
@@ -41,34 +76,102 @@ public sealed class GWorld {
 
     }
 
-    // Add patient
-    public void AddPatient(GameObject p) {
+    private bool MoveObjectFromTo(GameObject obj, List<GameObject> from, List<GameObject> to)
+    {
+        if (from.Contains(obj))
+        {
+            from.Remove(obj);
+            to.Add(obj);
+            return true;
+        }
 
-        // Add the patient to the patients Queue
-        patients.Enqueue(p);
+        return false;
     }
 
-    // Remove patient
-    public GameObject RemovePatient() {
-
-        if (patients.Count == 0) return null;
-        return patients.Dequeue();
+    public void PokemonFree2Eating(GameObject p)
+    {
+        MoveObjectFromTo(p, freePokemon, eatingPokemon);
     }
 
-    // Add cubicle
-    public void AddCubicle(GameObject p) {
-
-        // Add the patient to the patients Queue
-        cubicles.Enqueue(p);
+    public void PokemonFree2Fighting(GameObject p)
+    {
+        MoveObjectFromTo(p, freePokemon, fightingPokemon);
     }
 
-    // Remove cubicle
-    public GameObject RemoveCubicle() {
-
-        // Check we have something to remove
-        if (cubicles.Count == 0) return null;
-        return cubicles.Dequeue();
+    public void PokemonFighting2Stunned(GameObject p)
+    {
+        MoveObjectFromTo(p, fightingPokemon, stunnedPokemon);
     }
+
+    public void PokemonFighting2Eating(GameObject p)
+    {
+        MoveObjectFromTo(p, fightingPokemon, eatingPokemon);
+    }
+
+    public void PokemonFighting2Free(GameObject p)
+    {
+        MoveObjectFromTo(p, fightingPokemon, freePokemon);
+    }
+
+    public void PokemonEating2Fighting(GameObject p)
+    {
+        MoveObjectFromTo(p, eatingPokemon, fightingPokemon);
+    }
+
+    public void PokemonEating2Free(GameObject p)
+    {
+        MoveObjectFromTo(p, eatingPokemon, freePokemon);
+    }
+
+    public void PokemonStunned2Free(GameObject p)
+    {
+        MoveObjectFromTo(p, stunnedPokemon, freePokemon);
+    }
+
+    // Remove Food
+    public bool RemoveFood(GameObject f)
+    {
+        if (freeFood.Contains(f))
+        {
+            freeFood.Remove(f);
+            return true;
+        }
+
+        else if (eatenFood.Contains(f))
+        {
+            eatenFood.Remove(f);
+            return true;
+        }
+
+        else if (fightFood.Contains(f))
+        {
+            fightFood.Remove(f);
+            return true;
+        }
+        return false;
+    }
+
+    // Add Food
+    public void AddNewFood(GameObject f)
+    {
+        freeFood.Add(f);
+    }
+
+    public void FoodFree2Eaten(GameObject f)
+    {
+        MoveObjectFromTo(f, freeFood, eatenFood);
+    }
+
+    public void FoodEaten2Fight(GameObject f)
+    {
+        MoveObjectFromTo(f, eatenFood, fightFood);
+    }
+
+    public void FoodFight2Eaten(GameObject f)
+    {
+        MoveObjectFromTo(f, fightFood, eatenFood);
+    }
+
 
     public static GWorld Instance {
 
