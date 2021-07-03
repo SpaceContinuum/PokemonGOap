@@ -189,7 +189,7 @@ public sealed class GWorld {
         Vector3 currentPos = obj.transform.position;
         foreach (GameObject o in ObjList)
         {
-            float dist = Vector3.Distance(o.transform.position, currentPos);
+            float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
             if (dist < minDistance)
             {
                 closestObj = o;
@@ -202,12 +202,24 @@ public sealed class GWorld {
 
     public Food GetClosestFreeFood(GameObject obj)
     {
-        return GetClosestObject(obj, freeFood).GetComponent<Food>();
+        GameObject closestObj = GetClosestObject(obj, freeFood);
+        if (closestObj != null)
+        {
+            return closestObj.GetComponent<Food>();
+        }
+
+        return null;
     }
 
     Food GetClosestEatenFood(GameObject obj)
     {
-        return GetClosestObject(obj, eatenFood).GetComponent<Food>();
+        GameObject closestObj = GetClosestObject(obj, eatenFood);
+        if (closestObj != null)
+        {
+            return closestObj.GetComponent<Food>();
+        }
+
+        return null;
     }
 
     public static GWorld Instance {
