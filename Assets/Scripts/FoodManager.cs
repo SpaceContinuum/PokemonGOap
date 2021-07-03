@@ -7,9 +7,13 @@ public class FoodManager : MonoBehaviour {
     public GameObject foodPrefab;
     // Number of patients to spawn
     public int numPokemon = 5;
-    private int foodCounter = 1;
-    [SerializeField]
-    private List<Food> foodList; //where all the instances of food in the game are stored.
+
+    //private int foodCounter = 1;
+
+    //private int foodCounter = 1;
+    //[SerializeField]
+    //private List<Food> foodList; //where all the instances of food in the game are stored.
+
 
     public static FoodManager Instance { get; private set; } //singleton
     private void Awake()
@@ -34,12 +38,12 @@ public class FoodManager : MonoBehaviour {
    private void SpawnFood() {
         Vector2 spawnPosition = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-4.0f, 4.0f));
 
-        if (numPokemon - 1 > foodCounter)
+        if (numPokemon - 1 > GWorld.Instance.FoodCounter())
         {
             // Instantiate new food
-            Food newFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity).GetComponent<Food>();
-            foodList.Add(newFood);
-            foodCounter++;
+            GameObject newFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+            GWorld.Instance.AddNewFood(newFood);
+
         }
 
         // Invoke this method at random intervals
@@ -50,11 +54,6 @@ public class FoodManager : MonoBehaviour {
     void Update()
     {
 
-    }
-
-    public void RemoveFood()
-    {
-        foodCounter--;
     }
 
    

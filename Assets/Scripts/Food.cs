@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    private FoodManager spawner;
+    private Spawn spawner;
+    private bool eaten = false;
     public float destroyTimer = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
-        spawner = FindObjectOfType<FoodManager>();
+        spawner = FindObjectOfType<Spawn>();
         //Invoke("DestroyFood", destroyTimer);
     }
 
@@ -19,11 +20,18 @@ public class Food : MonoBehaviour
         
     }
 
-    void DestroyFood()
+    public void DestroyFood()
     {
-        spawner.RemoveFood();
+        GWorld.Instance.RemoveFood(this.gameObject);
         Destroy(gameObject);
         
     }
+
+    public Vector2 GetCoordinates()
+    {
+        return this.transform.position;
+    }
+
+
 
 }
