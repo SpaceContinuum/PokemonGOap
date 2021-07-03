@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Spawn : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class Spawn : MonoBehaviour {
     // Number of patients to spawn
     public int numPokemon = 5;
     private int foodCounter = 1;
+    [SerializeField]
+    private List<Food> foodList; //where all the instances of food in the game are stored.
 
     Spawn Spawner = null;
 
@@ -31,12 +34,13 @@ public class Spawn : MonoBehaviour {
     }
 
    private void SpawnFood() {
-        Vector3 spawnPosition = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-4.0f, 4.0f),0);
+        Vector2 spawnPosition = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-4.0f, 4.0f));
 
         if (numPokemon - 1 > foodCounter)
         {
             // Instantiate new food
-            Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+            Food newFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity).GetComponent<Food>();
+            foodList.Add(newFood);
             foodCounter++;
         }
 

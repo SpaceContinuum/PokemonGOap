@@ -35,6 +35,8 @@ public sealed class GWorld {
 
         // Set the time scale in Unity
         Time.timeScale = 5.0f;
+
+        
     }
 
     private GWorld() {
