@@ -8,5 +8,14 @@ public class ConfigData : ScriptableObject
 {
     [Header("Global Settings")]
     public int FoodArrSize = 10;
+    public float DebugTextDuration = 3f;
+
+    [Header("Pokemon Characteristics")]
+
+    
+    [Tooltip("The mean frequency (in seconds) for triggering Pokemon hunger action")]
+    [Range(0.0F, 20.0F)]
+    public float HungerFrequency = 10f;
+    public float HungerVariance = 2f;
 
 }

@@ -1,16 +1,22 @@
-﻿public class GoToFood : GAction
+﻿using UnityEngine;
+
+public class GoToFood : GAction
 {
+    GameObject resource;
     public override bool PrePerform()
     {
 
-        // Find a free or occupied food
-        target = inventory.FindItemWithTag("Food");
-        // Check that we did indeed find food
-        if (target == null)
-            // No food
-            return false;
-        // There is food
-        return true;
+        // Grab available food and remove it from the list
+        //resource = GWorld.Instance.GetClosestFood(gameObject);
+        // Test did we get one?
+        if (resource != null) {
+
+            // Yes we have food
+            inventory.AddItem(resource);
+            target = resource;
+            return true;
+        }
+        else return false;
     }
 
     public override bool PostPerform()

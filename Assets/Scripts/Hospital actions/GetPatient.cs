@@ -4,7 +4,7 @@ public class GetPatient : GAction {
 
     // Resource in this case = cubicle
     GameObject resource;
-
+    
     public override bool PrePerform() {
 
         // Set our target patient and remove them from the Queue

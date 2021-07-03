@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ConfigData
   m_EditorClassIdentifier: 
   FoodArrSize: 10
+  HungerFrequency: 10
+  HungerVariance: 2

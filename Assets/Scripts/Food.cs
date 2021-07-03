@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    private Spawn spawner;
+    private FoodManager spawner;
     public float destroyTimer = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
-        spawner = FindObjectOfType<Spawn>();
+        spawner = FindObjectOfType<FoodManager>();
         //Invoke("DestroyFood", destroyTimer);
     }
 

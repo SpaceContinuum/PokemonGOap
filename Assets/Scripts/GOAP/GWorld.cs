@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class GWorld {
@@ -9,6 +10,12 @@ public sealed class GWorld {
     private static WorldStates world;
     // Queue of patients
     private static Queue<GameObject> patients;
+
+    internal GameObject GetClosestAvaialableFood(GameObject gameObject)
+    {
+        throw new NotImplementedException();
+    }
+
     // Queue of cubicles
     private static Queue<GameObject> cubicles;
 

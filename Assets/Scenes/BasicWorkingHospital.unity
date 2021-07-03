@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 0}
   numPokemon: 5
+  foodList: []
 --- !u!4 &57766220
 Transform:
   m_ObjectHideFlags: 0
@@ -1073,6 +1074,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1000317771}
+    - target: {fileID: 1618912316, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: preConditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618912316, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: preConditions.Array.data[2].key
+      value: ABD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618912316, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: preConditions.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 177407082141715887, guid: 51e437be22296b340954bf6591a60065,
         type: 3}
       propertyPath: m_RootOrder
@@ -2161,7 +2174,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.584e-42, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.85e-43, y: 4.9e-44, z: 0, w: -6.8782616}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

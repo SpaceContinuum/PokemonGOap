@@ -38,7 +38,9 @@
   <ItemGroup>
      <Compile Include="Assets\AgentVisualiser\GAgentVisual.cs" />
      <Compile Include="Assets\Config\ConfigData.cs" />
+     <Compile Include="Assets\Scripts\DebugText.cs" />
      <Compile Include="Assets\Scripts\Food.cs" />
+     <Compile Include="Assets\Scripts\FoodManager.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAction.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAgent.cs" />
      <Compile Include="Assets\Scripts\GOAP\GInventory.cs" />
@@ -46,6 +48,7 @@
      <Compile Include="Assets\Scripts\GOAP\GWorld.cs" />
      <Compile Include="Assets\Scripts\GOAP\WorldStates.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GetAvailableFood.cs" />
      <Compile Include="Assets\Scripts\GoToFood.cs" />
      <Compile Include="Assets\Scripts\Hospital actions\GetPatient.cs" />
      <Compile Include="Assets\Scripts\Hospital actions\GetTreated.cs" />
@@ -61,7 +64,6 @@
      <Compile Include="Assets\Scripts\Pokemon.cs" />
      <Compile Include="Assets\Scripts\PokemonMovement.cs" />
      <Compile Include="Assets\Scripts\PokemonTrained.cs" />
-     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Microsoft VS Code/bin/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

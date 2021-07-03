@@ -106,4 +106,5 @@ public abstract class GAction : MonoBehaviour {
 
     public abstract bool PrePerform();
     public abstract bool PostPerform();
+    public abstract void Reset();
 }

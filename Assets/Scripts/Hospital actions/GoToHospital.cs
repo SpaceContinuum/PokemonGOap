@@ -8,4 +8,9 @@
 
         return true;
     }
+
+    public override void Reset()
+    {
+        afterEffects[0] = new WorldState("isWaiting", 0);
+    }
 }
