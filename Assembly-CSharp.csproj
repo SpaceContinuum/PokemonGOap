@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\GOAP\GPlanner.cs" />
      <Compile Include="Assets\Scripts\GOAP\GWorld.cs" />
      <Compile Include="Assets\Scripts\GOAP\WorldStates.cs" />
+     <Compile Include="Assets\Scripts\GPlanner.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GetAvailableFood.cs" />
      <Compile Include="Assets\Scripts\GoToFood.cs" />
