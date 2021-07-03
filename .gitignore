@@ -72,3 +72,4 @@ crashlytics-build.properties
 *.csproj
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj
+Library/ArtifactDB
