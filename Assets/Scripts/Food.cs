@@ -20,11 +20,18 @@ public class Food : MonoBehaviour
         
     }
 
-    void DestroyFood()
+    public void DestroyFood()
     {
         GWorld.Instance.RemoveFood(this.gameObject);
         Destroy(gameObject);
         
     }
+
+    public Vector2 GetCoordinates()
+    {
+        return this.transform.position;
+    }
+
+
 
 }

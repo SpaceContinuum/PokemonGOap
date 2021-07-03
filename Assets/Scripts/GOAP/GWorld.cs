@@ -153,6 +153,14 @@ public sealed class GWorld {
         return false;
     }
 
+    // Add Count total food on the map
+    public int FoodCounter()
+    {
+        int counter = 0;
+        counter += (freeFood.Count + eatenFood.Count + fightFood.Count);
+        return counter;
+    }
+
     // Add Food
     public void AddNewFood(GameObject f)
     {
@@ -174,6 +182,33 @@ public sealed class GWorld {
         MoveObjectFromTo(f, fightFood, eatenFood);
     }
 
+    private Food GetClosestFood(GameObject obj, List<GameObject> foodList)
+    {
+        Food closestFood = null;
+        float minDistance = Mathf.Infinity;
+        Vector3 currentPos = obj.transform.position;
+        foreach (GameObject f in foodList)
+        {
+            float dist = Vector3.Distance(f.transform.position, currentPos);
+            if (dist < minDistance)
+            {
+                closestFood = f.GetComponent<Food>();
+                minDistance = dist;
+            }
+        }
+
+        return closestFood;
+    }
+
+    public Food GetClosestFreeFood(GameObject obj)
+    {
+        return GetClosestFood(obj, freeFood);
+    }
+
+    Food GetClosestEatenFood(GameObject obj)
+    {
+        return GetClosestFood(obj, eatenFood);
+    }
 
     public static GWorld Instance {
 
