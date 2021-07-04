@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 //make the dictionary elements their own serializable class
 //so we can edit them in the inspector
@@ -8,6 +10,10 @@ public class WorldState {
     public string key;
     public int value;
 
+    public WorldState(string k, int v) {
+        key = k;
+        value = v;
+    }
 }
 
 public class WorldStates {
@@ -41,7 +47,7 @@ public class WorldStates {
             // Add the value to the state
             states[key] += value;
             // If it's less than zero then remove it
-            if (states[key] <= 0) {
+            if (states[key] < 0) {
 
                 // Call the RemoveState method
                 RemoveState(key);

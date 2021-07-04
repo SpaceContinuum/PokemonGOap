@@ -124,7 +124,7 @@ public class GPlanner {
         foreach (GAction action in usableActions) {
 
             //check their preconditions
-            if (action.IsAhievableGiven(parent.state)) {
+            if (action.IsAchievableGiven(parent.state)) {
 
                 //get the state of the world if the parent node were to be executed
                 Dictionary<string, int> currentState = new Dictionary<string, int>(parent.state);

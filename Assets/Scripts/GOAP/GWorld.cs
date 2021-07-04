@@ -49,7 +49,7 @@ public sealed class GWorld {
 
         // Inform the state
         if (fruits.Length > 0) {
-            world.ModifyState("AvailableFood", fruits.Length);
+            world.ModifyState("availableFood", fruits.Length);
         }
 
         // Find all GameObjects that are tagged "Food"
@@ -211,7 +211,7 @@ public sealed class GWorld {
         return null;
     }
 
-    Food GetClosestEatenFood(GameObject obj)
+    public Food GetClosestEatenFood(GameObject obj)
     {
         GameObject closestObj = GetClosestObject(obj, eatenFood);
         if (closestObj != null)
@@ -220,6 +220,24 @@ public sealed class GWorld {
         }
 
         return null;
+    }
+
+    public bool ClaimFood(Food food) {
+        if (food == null) return false;
+
+        if (freeFood.Contains(food.gameObject)) {
+            FoodFree2Eaten(food.gameObject);
+            return true;
+        }
+        else return false; //food is already claimed. Pokemon sad (or fight?).
+    }
+
+    public void ConsumeFood(GameObject f) {
+        if (f == null || f.GetComponent<Food>() == null) {
+            Debug.Log("Trying to consume null object");
+        }
+        else if (eatenFood.Contains(f)) eatenFood.Remove(f);
+        else Debug.Log("Trying to remove Food not currently in eatenFood");
     }
 
     public static GWorld Instance {
