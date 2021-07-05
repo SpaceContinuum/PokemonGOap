@@ -15,7 +15,7 @@ public class ConfigData : ScriptableObject
     
     [Tooltip("The mean frequency (in seconds) for triggering Pokemon hunger action")]
     [Range(0.0F, 20.0F)]
-    public float HungerFrequency = 10f;
+    public float HungerFrequency = 30f;
     public float HungerVariance = 2f;
 
 }

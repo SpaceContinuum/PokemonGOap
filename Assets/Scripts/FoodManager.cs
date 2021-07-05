@@ -32,12 +32,15 @@ public class FoodManager : MonoBehaviour {
 
     void Start() {
 
-        Invoke("SpawnFood", 5.0f);
+        //Invoke("SpawnFood", 5.0f);
     }
 
-   private void SpawnFood() {
-        Vector2 spawnPosition = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-4.0f, 4.0f));
+   public void SpawnFood() {
+       //int xSize = Screen.width;
+       //int ySize = Screen.height;
 
+        Vector2 spawnPosition = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-4.0f, 4.0f));
+        /*
         if (numPokemon - 1 > GWorld.Instance.FoodCounter())
         {
             // Instantiate new food
@@ -45,9 +48,12 @@ public class FoodManager : MonoBehaviour {
             GWorld.Instance.AddNewFood(newFood);
 
         }
-
+        */
         // Invoke this method at random intervals
-        Invoke("SpawnFood", Random.Range(2.0f, 10.0f));
+        //Invoke("SpawnFood", Random.Range(2.0f, 10.0f));
+        //Instantiate new food
+        GameObject newFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+        GWorld.Instance.AddNewFood(newFood);
     }
 
     // Update is called once per frame

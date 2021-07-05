@@ -222,6 +222,9 @@ public sealed class GWorld {
         return null;
     }
 
+    public int freeFoodCount() {
+        return freeFood.Count;
+    }
     public bool ClaimFood(Food food) {
         if (food == null) return false;
 

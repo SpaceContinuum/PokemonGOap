@@ -13,8 +13,8 @@ public class Pokemon : GAgent
 
         // Call the base start
         base.Start();
-        // Set up the subgoal "isEating"
-        SubGoal s1 = new SubGoal("isEating", 5, false);
+        // Set up the subgoal "isFull"
+        SubGoal s1 = new SubGoal("isFull", 5, false);
         // Add it to the goals
         goals.Add(s1, 3);
 
@@ -30,13 +30,13 @@ public class Pokemon : GAgent
 
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
-        Invoke("GetHungry", 10f);
+        //Invoke("GetHungry", 10f);
         
     }
 
 
    
-    void GetHungry() {
+    public void GetHungry() {
         beliefs.ModifyState("isHungry", 0);
         //call the get hungry method over and over at random times to make the Pokemon
         //get hungry again

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Pokemon
+  - UI
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class GInventory {
 
     // Method to add items to our list
     public void AddItem(GameObject i) {
-
+        Debug.Log("added "+i.name+" to inventory");
         items.Add(i);
     }
 
@@ -30,10 +30,12 @@ public class GInventory {
     // Remove an item from our list
     public void RemoveItem(GameObject i) {
 
-        int indexToRemove = -1;
+        //int indexToRemove = -1;
 
+        items.Remove(i);
+        Debug.Log("removed " + i.name + " from inventory" );
         // Search through the list to see if it exists
-        foreach (GameObject g in items) {
+        /*foreach (GameObject g in items) {
 
             // Initially set indexToRemove to 0. The first item in the List
             indexToRemove++;
@@ -48,6 +50,6 @@ public class GInventory {
 
             // Yes we do.  So remove the item at indexToRemove
             items.RemoveAt(indexToRemove);
-        }
+        }*/
     }
 }
