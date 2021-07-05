@@ -43,7 +43,7 @@ public class Pokemon : GAgent
         Debug.Log(gameObject.name+" is hungry");
 
         //TODO: move this to the "Eat" function.
-        Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
+        //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
 
     }
 
