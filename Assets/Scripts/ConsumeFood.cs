@@ -32,6 +32,7 @@ public class ConsumeFood : GAction
 
     public override void Reset()
     {
+        actionName = "ConsumeFood";
         duration = 5;
         cost = 1;
         preConditions = new WorldState[2];

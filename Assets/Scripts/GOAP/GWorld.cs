@@ -239,7 +239,10 @@ public sealed class GWorld {
         if (f == null || f.GetComponent<Food>() == null) {
             Debug.Log("Trying to consume null object");
         }
-        else if (eatenFood.Contains(f)) eatenFood.Remove(f);
+        else if (eatenFood.Contains(f)) {
+            eatenFood.Remove(f);
+            GameObject.Destroy(f);
+        }
         else Debug.Log("Trying to remove Food not currently in eatenFood");
     }
 
