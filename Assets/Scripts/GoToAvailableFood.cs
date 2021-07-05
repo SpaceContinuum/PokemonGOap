@@ -12,6 +12,7 @@ public class GoToAvailableFood : GAction
         bool possession = GWorld.Instance.ClaimFood(target.GetComponent<Food>());
         if (possession) {
             Debug.Log(gameObject.name + " has claimed " + target.name);
+            target.GetComponent<Food>().owner = gameObject;
             inventory.AddItem(target);
             return true;
         }
@@ -35,10 +36,11 @@ public class GoToAvailableFood : GAction
     {
         target = GWorld.Instance.GetClosestFreeFood(gameObject).gameObject;
         if (target == null) {
-            Debug.Log(gameObject.name + " is going towards " + target.name);
+                Debug.Log(gameObject.name + " couldn't find food");    
                 return false;
         }
-        Debug.Log(gameObject.name + " couldn't find food");
+        Debug.Log(gameObject.name + " is going towards " + target.name);
+        
         return true;
     }
 

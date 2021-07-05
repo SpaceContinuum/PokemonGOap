@@ -39,7 +39,6 @@ public class ConsumeFood : GAction
         preConditions[0] = new WorldState("hasFood", 0);
         preConditions[1] = new WorldState("isHungry", 0);
         afterEffects = new WorldState[1];
-        //afterEffects[0] = new WorldState("isEating", 0);
         afterEffects[0] = new WorldState("isFull", 0);
 
     }

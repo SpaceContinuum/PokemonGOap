@@ -9,6 +9,7 @@ public class ConfigData : ScriptableObject
     [Header("Global Settings")]
     public int FoodArrSize = 10;
     public float DebugTextDuration = 3f;
+    public int OccupiedFoodCostFactor=5;
 
     [Header("Pokemon Characteristics")]
 

@@ -3,13 +3,8 @@
 public class Pokemon : GAgent
 {
 
-    protected ConfigData gameConfig;
-    
-    public GameController gameController;
     new void Start()
     {
-        gameController = FindObjectOfType<GameController>();
-        gameConfig = gameController.config;
 
         // Call the base start
         base.Start();

@@ -18,7 +18,7 @@ public class SubGoal {
     }
 }
 
-public class GAgent : MonoBehaviour {
+public class GAgent : GBase {
 
     // Store our list of actions
     public List<GAction> actions = new List<GAction>();
@@ -58,6 +58,13 @@ public class GAgent : MonoBehaviour {
         invoked = false;
     }
 
+    public void Interrupt() {
+        CancelInvoke("CompleteAction");
+        currentAction = null;
+        planner = null;
+        actionQueue = null;
+
+    }
     void LateUpdate() {
 
         //if there's a current action and it is still running

@@ -43,6 +43,7 @@
      <Compile Include="Assets\Scripts\DebugText.cs" />
      <Compile Include="Assets\Scripts\Food.cs" />
      <Compile Include="Assets\Scripts\FoodManager.cs" />
+     <Compile Include="Assets\Scripts\GBase.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAction.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAgent.cs" />
      <Compile Include="Assets\Scripts\GOAP\GInventory.cs" />
@@ -51,8 +52,8 @@
      <Compile Include="Assets\Scripts\GPlanner.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GoToAvailableFood.cs" />
-     <Compile Include="Assets\Scripts\GoToFood.cs" />
      <Compile Include="Assets\Scripts\GoToOccupiedFood.cs" />
+     <Compile Include="Assets\Scripts\Mouse.cs" />
      <Compile Include="Assets\Scripts\Pokemon.cs" />
      <Compile Include="Assets\Scripts\PokemonMovement.cs" />
      <Compile Include="Assets\Scripts\PokemonTrained.cs" />
