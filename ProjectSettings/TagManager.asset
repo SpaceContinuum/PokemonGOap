@@ -4,13 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Lounge
-  - WaitingArea
-  - Home
-  - Door
-  - Cubicle
-  - Reception
   - Food
+  - Pokemon
+  - UI
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public abstract class GAction : MonoBehaviour {
     public float duration = 0.0f;
     // An array of WorldStates of preconditions
     public WorldState[] preConditions;
+    
     // An array of WorldStates of afterEffects
     public WorldState[] afterEffects;
     // The NavMEshAgent attached to the agent
@@ -81,7 +82,7 @@ public abstract class GAction : MonoBehaviour {
 
     //check if the action is achievable given the condition of the
     //world and trying to match with the actions preconditions
-    public bool IsAhievableGiven(Dictionary<string, int> conditions) {
+    public bool IsAchievableGiven(Dictionary<string, int> conditions) {
 
         foreach (KeyValuePair<string, int> p in preconditions) {
 
@@ -106,4 +107,5 @@ public abstract class GAction : MonoBehaviour {
 
     public abstract bool PrePerform();
     public abstract bool PostPerform();
+    public abstract void Reset();
 }
