@@ -39,6 +39,7 @@
      <Compile Include="Assets\AgentVisualiser\GAgentVisual.cs" />
      <Compile Include="Assets\Config\ConfigData.cs" />
      <Compile Include="Assets\Scripts\ConsumeFood.cs" />
+     <Compile Include="Assets\Scripts\DebugButton.cs" />
      <Compile Include="Assets\Scripts\DebugText.cs" />
      <Compile Include="Assets\Scripts\Food.cs" />
      <Compile Include="Assets\Scripts\FoodManager.cs" />

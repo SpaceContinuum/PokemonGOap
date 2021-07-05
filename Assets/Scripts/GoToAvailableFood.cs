@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GoToAvailableFood : GAction
 {
@@ -21,6 +22,15 @@ public class GoToAvailableFood : GAction
         }
     }
 
+    public new int cost { 
+        get {
+            Food f = GWorld.Instance.GetClosestFreeFood(gameObject);
+            NavMeshPath path = new NavMeshPath();
+
+            agent.CalculatePath(f.transform.position, path);
+            return (int)(PathLength(path));
+        }
+    }
     public override bool PrePerform()
     {
         target = GWorld.Instance.GetClosestFreeFood(gameObject).gameObject;
@@ -34,7 +44,6 @@ public class GoToAvailableFood : GAction
 
     public override void Reset()
     {
-        cost = 1;
         duration = 10;
         actionName = "FindAvailableFood";
         

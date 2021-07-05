@@ -108,4 +108,15 @@ public abstract class GAction : MonoBehaviour {
     public abstract bool PrePerform();
     public abstract bool PostPerform();
     public abstract void Reset();
+
+    protected float PathLength(NavMeshPath path) {
+        float d = 0f;
+        Vector2 curr = gameObject.transform.position;
+        foreach (Vector2 c in path.corners) {
+            d+=(c-curr).magnitude; //ideally, figure out a way to do this with sqrMagnitude for performance reasons, but this is fine for now.
+            curr = c;
+        }
+        return d;
+    }
+       
 }

@@ -64,19 +64,27 @@ public class GAgent : MonoBehaviour {
         if (currentAction != null && currentAction.running) {
 
             // Find the distance to the target
-            float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
-            // Check the agent has a goal and has reached that goal
-            if (currentAction.agent.hasPath && distanceToTarget < 2.0f) { // currentAction.agent.remainingDistance < 1.0f) 
-
-                if (!invoked) {
-
-                    //if the action movement is complete wait
-                    //a certain duration for it to be completed
-                    Invoke("CompleteAction", currentAction.duration);
-                    invoked = true;
-                }
+            //Interrupt the action if the target has been voided or destroyed.
+            if (currentAction.target == null) {
+                Debug.Log(name+": My target is gone! I need a new plan.");
+                planner = null;
+                actionQueue = null;
             }
-            return;
+            else {
+                float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
+                // Check the agent has a goal and has reached that goal
+                if (currentAction.agent.hasPath && distanceToTarget < 2.0f) { // currentAction.agent.remainingDistance < 1.0f) 
+
+                    if (!invoked) {
+
+                        //if the action movement is complete wait
+                        //a certain duration for it to be completed
+                        Invoke("CompleteAction", currentAction.duration);
+                        invoked = true;
+                    }
+                }
+                return;
+            }
         }
 
         // Check we have a planner and an actionQueue
