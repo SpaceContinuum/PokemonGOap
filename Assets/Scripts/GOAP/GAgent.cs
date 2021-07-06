@@ -35,6 +35,17 @@ public class GAgent : GBase {
     GPlanner planner;
     // Action Queue
     Queue<GAction> actionQueue;
+    public GAction[] actionQueueToArray {
+        get {
+            if (actionQueue != null) {
+                GAction[] result = new GAction[actionQueue.Count];
+                actionQueue.CopyTo(result, 0);
+                return result;
+            }
+            else return null;
+
+        }
+    }
     // Our current action
     public GAction currentAction;
     // Our subgoal

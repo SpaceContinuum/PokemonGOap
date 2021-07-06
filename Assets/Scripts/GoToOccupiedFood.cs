@@ -39,7 +39,7 @@ public class GoToOccupiedFood : GAction
 
         return false;
     }
-
+/*
     public new int cost {
         get {
             Food f = GWorld.Instance.GetClosestEatenFood(gameObject);
@@ -51,14 +51,15 @@ public class GoToOccupiedFood : GAction
             //TODO: replace config constant with relative strength calculation
             return config.OccupiedFoodCostFactor+(int)(PathLength(path));
             }
-    }
+    }*/
     public override void Reset()
     {
         duration = 10;
-        actionName = "FindOccupiedFood";
-        preConditions = new WorldState[2];
-        preConditions[0] = new WorldState("isHungry", 0);
-        preConditions[1] = new WorldState("foodEaten", 0);
+        cost = 5;
+        actionName = "GoToOccupiedFood";
+        preConditions = new WorldState[1];
+        preConditions[0] = new WorldState("foodEaten", 0);
+        //preConditions[1] = new WorldState("isHungry", 0);
         afterEffects = new WorldState[1];
         afterEffects[0] = new WorldState("attacking", 0);
     }

@@ -29,9 +29,10 @@ public class FightForFood : GAction
 
     public override void Reset()
     {
+        actionName = "FightForFood";
         cost = 3;
         duration = 5;
-        preConditions = new WorldState[3];
+        preConditions = new WorldState[1];
         preConditions[0] = new WorldState(WorldState.Label.attacking,0);
         afterEffects = new WorldState[1];
         afterEffects[0] = new WorldState(WorldState.Label.hasFood, 0);

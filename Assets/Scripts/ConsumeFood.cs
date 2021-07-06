@@ -11,8 +11,6 @@ public class ConsumeFood : GAction
         GWorld.Instance.ConsumeFood(target); 
         beliefs.RemoveState("isHungry");
         beliefs.RemoveState("isEating");
-        
-
         return true;
 
     }
