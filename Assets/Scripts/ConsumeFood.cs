@@ -36,10 +36,14 @@ public class ConsumeFood : GAction
         duration = 5;
         cost = 1;
         preConditions = new WorldState[2];
-        preConditions[0] = new WorldState("hasFood", 0);
-        preConditions[1] = new WorldState("isHungry", 0);
+       
+        preConditions[0] = new WorldState(WorldState.Label.hasFood, 0);
+        
+        preConditions[1] = new WorldState(WorldState.Label.isHungry, 0);
         afterEffects = new WorldState[1];
-        afterEffects[0] = new WorldState("isFull", 0);
+
+        
+        afterEffects[0] = new WorldState(WorldState.Label.isFull, 0);
 
     }
 

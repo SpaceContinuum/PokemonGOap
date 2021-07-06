@@ -158,4 +158,8 @@ public class GAgent : GBase {
             }
         }
     }
+
+    public void OnMouseOver() {
+        Debug.Log(name + " mouse over me.");
+    }
 }

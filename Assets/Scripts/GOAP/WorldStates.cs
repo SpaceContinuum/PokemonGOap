@@ -14,9 +14,31 @@ public class WorldState {
         key = k;
         value = v;
     }
+
+    public WorldState(Label k, int v) : this(getLabel(k), v) {}
+        
+    public static string getLabel(Label v) {
+        return v.ToString();
+    }
+     public enum Label {
+        isHungry,
+        foodEaten,
+        attacking,
+        hasFood,
+        isFull,
+        availableFood,
+        underAttack
+
+    }
+    
 }
 
+
+
+
 public class WorldStates {
+
+    
 
     // Constructor
     public Dictionary<string, int> states;
@@ -47,7 +69,7 @@ public class WorldStates {
             // Add the value to the state
             states[key] += value;
             // If it's less than zero then remove it
-            if (states[key] < 0) {
+            if (states[key] < 0) { //TODO: should this be <0 or <=0?
 
                 // Call the RemoveState method
                 RemoveState(key);
@@ -85,4 +107,8 @@ public class WorldStates {
 
         return states;
     }
+
+    //WorldState Labels
+
+   
 }
