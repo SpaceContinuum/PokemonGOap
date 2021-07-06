@@ -12,10 +12,9 @@ public class DefendFood : GAction
     {
         beliefs.RemoveState(WorldState.Label.underAttack);
         beliefs.ModifyState(WorldState.Label.stunned, 1);
+        transform.Rotate(new Vector3(0,0,90));
 
-        throw new System.NotImplementedException();
-
-
+        return true;
     }
 
     public override bool PrePerform()
@@ -48,7 +47,8 @@ public class DefendFood : GAction
 
     public override void Reset()
     {
-        duration = 5;
+        actionName = "DefendFood";
+        duration = 3;
         cost = 0; //this should always be a priority since there's no alternative.
         preConditions = new WorldState[2];
         preConditions[0] = new WorldState(WorldState.Label.underAttack,0);
