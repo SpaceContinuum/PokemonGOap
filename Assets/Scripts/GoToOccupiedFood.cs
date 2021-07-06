@@ -19,11 +19,25 @@ public class GoToOccupiedFood : GAction
     {   
         Food f = target.GetComponent<Food>();
         if (target != null && f != null && f.owner != null ) { //food is still there and it is being held by another pokemon!
-            GameObject owner = f.owner;
+            GameObject owner = f.owner; 
 
+            Pokemon other = owner.GetComponent<Pokemon>();
+            if (other == null) {
+                Debug.Log(name + " trying to attack a non-pokemon " + owner.name);
+                return false;
+            }
             //Declare attack on opponent
-            owner.GetComponent<GAgent>().Interrupt();
+            Debug.Log(gameObject.name + " attacking " + other.name + " for " + target.name);
+            other.Interrupt();
+            other.beliefs.ModifyState("underAttack",1);
+            other.inventory.AddItem(gameObject);
+            beliefs.ModifyState("attacking", 1);
+            inventory.AddItem(other.gameObject);
+
+            return true;
         }
+
+        return false;
     }
 
     public new int cost {
@@ -46,7 +60,7 @@ public class GoToOccupiedFood : GAction
         preConditions[0] = new WorldState("isHungry", 0);
         preConditions[1] = new WorldState("foodEaten", 0);
         afterEffects = new WorldState[1];
-        afterEffects[0] = new WorldState("hasFood", 0);
+        afterEffects[0] = new WorldState("attacking", 0);
     }
 
    

@@ -20,6 +20,7 @@ public class WorldState {
     public static string getLabel(Label v) {
         return v.ToString();
     }
+    //WorldState Labels
      public enum Label {
         isHungry,
         foodEaten,
@@ -27,7 +28,11 @@ public class WorldState {
         hasFood,
         isFull,
         availableFood,
-        underAttack
+        underAttack,
+        safeFromAttack,
+
+        stunned,
+        recovered
 
     }
     
@@ -80,6 +85,10 @@ public class WorldStates {
         }
     }
 
+    public void ModifyState(WorldState.Label key, int value) {
+        ModifyState(key.ToString(), value);
+    }
+
     // Method to remove a state
     public void RemoveState(string key) {
 
@@ -88,6 +97,10 @@ public class WorldStates {
 
             states.Remove(key);
         }
+    }
+
+    public void RemoveState(WorldState.Label key) {
+        RemoveState(key.ToString());
     }
 
     // Set a state
@@ -108,7 +121,7 @@ public class WorldStates {
         return states;
     }
 
-    //WorldState Labels
+    
 
    
 }

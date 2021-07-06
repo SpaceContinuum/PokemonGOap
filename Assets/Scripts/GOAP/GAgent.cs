@@ -16,6 +16,8 @@ public class SubGoal {
         sGoals.Add(s, i);
         remove = r;
     }
+
+    public SubGoal(WorldState.Label label, int i, bool r) : this(label.ToString(), i, r) {}
 }
 
 public class GAgent : GBase {

@@ -23,6 +23,8 @@ public class Pokemon : GAgent
         // Add it to the goals
         goals.Add(s3, 1);
 
+        SubGoal s4 = new SubGoal(WorldState.Label.safeFromAttack, 10, false);
+
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);

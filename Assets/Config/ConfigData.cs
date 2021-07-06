@@ -19,4 +19,8 @@ public class ConfigData : ScriptableObject
     public float HungerFrequency = 30f;
     public float HungerVariance = 2f;
 
+    //[Header("WorldState Label Constants")]
+    
+   
+
 }
