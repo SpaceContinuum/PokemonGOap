@@ -16,9 +16,11 @@ public class SubGoal {
         sGoals.Add(s, i);
         remove = r;
     }
+
+    public SubGoal(WorldState.Label label, int i, bool r) : this(label.ToString(), i, r) {}
 }
 
-public class GAgent : MonoBehaviour {
+public class GAgent : GBase {
 
     // Store our list of actions
     public List<GAction> actions = new List<GAction>();
@@ -58,6 +60,13 @@ public class GAgent : MonoBehaviour {
         invoked = false;
     }
 
+    public void Interrupt() {
+        CancelInvoke("CompleteAction");
+        currentAction = null;
+        planner = null;
+        actionQueue = null;
+
+    }
     void LateUpdate() {
 
         //if there's a current action and it is still running
@@ -150,5 +159,9 @@ public class GAgent : MonoBehaviour {
                 actionQueue = null;
             }
         }
+    }
+
+    public void OnMouseOver() {
+        Debug.Log(name + " mouse over me.");
     }
 }

@@ -3,13 +3,8 @@
 public class Pokemon : GAgent
 {
 
-    protected ConfigData gameConfig;
-    
-    public GameController gameController;
     new void Start()
     {
-        gameController = FindObjectOfType<GameController>();
-        gameConfig = gameController.config;
 
         // Call the base start
         base.Start();
@@ -27,6 +22,8 @@ public class Pokemon : GAgent
         SubGoal s3 = new SubGoal("isHiding", 3, false);
         // Add it to the goals
         goals.Add(s3, 1);
+
+        SubGoal s4 = new SubGoal(WorldState.Label.safeFromAttack, 10, false);
 
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
