@@ -7,8 +7,7 @@ public class Recover : GAction
     public override bool PostPerform()
     {
         Debug.Log(name + " has finished recovering");
-        beliefs.RemoveState(WorldState.Label.stunned);
-        transform.Rotate(new Vector3(0,0,-90));
+        gameObject.GetComponent<Pokemon>().SetStun(false);
         return true;
     }
 

@@ -49,7 +49,7 @@ public sealed class GWorld {
 
         // Inform the state
         if (fruits.Length > 0) {
-            world.ModifyState("availableFood", fruits.Length);
+            world.ModifyState(WorldState.Label.availableFood, fruits.Length);
         }
 
         // Find all GameObjects that are tagged "Food"
@@ -165,11 +165,14 @@ public sealed class GWorld {
     public void AddNewFood(GameObject f)
     {
         freeFood.Add(f);
+        world.ModifyState(WorldState.Label.availableFood, 1);
     }
 
     public void FoodFree2Eaten(GameObject f)
     {
         MoveObjectFromTo(f, freeFood, eatenFood);
+        world.ModifyState(WorldState.Label.foodEaten, 1);
+        world.ModifyState(WorldState.Label.availableFood, -1);
     }
 
     public void FoodEaten2Fight(GameObject f)
@@ -267,6 +270,11 @@ public sealed class GWorld {
     public int freeFoodCount() {
         return freeFood.Count;
     }
+
+    public int eatenFoodCount() {
+        return eatenFood.Count;
+        
+    }
     public bool ClaimFood(Food food) {
         if (food == null) return false;
 
@@ -283,6 +291,7 @@ public sealed class GWorld {
         }
         else if (eatenFood.Contains(f)) {
             eatenFood.Remove(f);
+            world.ModifyState(WorldState.Label.foodEaten, -1);
             GameObject.Destroy(f);
         }
         else Debug.Log("Trying to remove Food not currently in eatenFood");
