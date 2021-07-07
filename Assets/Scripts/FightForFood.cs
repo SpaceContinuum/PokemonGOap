@@ -7,10 +7,12 @@ public class FightForFood : GAction
     GameObject attackTarget;
     public override bool PostPerform()
     {
+        GetComponent<Pokemon>().anim.SetBool("isFighting", false);
         //make sure we got the food from our target when they were defeated.
         GameObject f = inventory.FindItemWithTag("Food");
         if (f != null) {
             beliefs.RemoveState(WorldState.Label.attacking);
+
             return true;
         }
         return false;
@@ -24,6 +26,8 @@ public class FightForFood : GAction
             return false;
         }
         inventory.RemoveItem(attackTarget);
+
+        GetComponent<Pokemon>().anim.SetBool("isFighting", true);
         return true;
     }
 

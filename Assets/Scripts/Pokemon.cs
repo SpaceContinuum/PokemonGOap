@@ -35,10 +35,7 @@ public class Pokemon : GAgent
         SubGoal s3 = new SubGoal(WorldState.Label.recovered, 10, false);
         goals.Add(s3,10);
         
-        
-        SubGoal s4 = new SubGoal(WorldState.Label.recovered, 10, false);
-        goals.Add(s4,10);
-        
+     
         anim = GetComponent<Animator>();
     }
 
@@ -104,11 +101,13 @@ public class Pokemon : GAgent
         if (state && !beliefs.HasState(WorldState.Label.stunned))
         {
             beliefs.ModifyState(WorldState.Label.stunned, 0);
-            transform.Rotate(new Vector3(0,0,90));
+            anim.SetBool("isStunned", true);
+            //transform.Rotate(new Vector3(0,0,90));
         }
         else {
             beliefs.RemoveState(WorldState.Label.stunned);
-            transform.Rotate(new Vector3(0,0,-90));
+            anim.SetBool("isStunned", false);
+            //transform.Rotate(new Vector3(0,0,-90));
         }
     }
 
