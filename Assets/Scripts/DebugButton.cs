@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,28 +26,16 @@ public class DebugButton : MonoBehaviour
 
     // Update is called once per frame
     void TriggerState() {
-        int requestedState = stateDropdown.value;
-        string msg = pokemon.name;
-        switch(requestedState) {
-            case 0:
-                pokemon.GetHungry();
-                msg+=": triggering hunger";
-                break;
-            case 1:
-                if (pokemon.GetComponent<PokemonTrained>() != null) {
-                    pokemon.GetComponent<PokemonTrained>().SetViolence();
-                    msg+=": triggering violence";
-                }
-                else msg+=": not a trained pokemon";
-                break;
-            case 2:
-                pokemon.SetStun(true);
-                msg+=": setting stun";
-                break;
-            default:
-                msg+=": Unknown state requested";
-                break;
+        string label = stateDropdown.GetComponentInChildren<Text>().text;
+        WorldState.Label requestedState;
+
+        if (!Enum.TryParse<WorldState.Label>(label, out requestedState)) {
+            Debug.Log(gameObject.name+ ": Cannot parse requested state "+label);
+            return;
         }
-        Debug.Log(msg+", button value: "+requestedState);
+        
+        string msg = pokemon.name;
+        pokemon.beliefs.ModifyState(requestedState,0);
+        Debug.Log(pokemon.name+": applying state "+requestedState);
     }
 }

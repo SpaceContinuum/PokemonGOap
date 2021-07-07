@@ -32,7 +32,7 @@ public class Pokemon : GAgent
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);
         
-        SubGoal s3 = new SubGoal(WorldState.Label.recovered, 10, false);
+        SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
         goals.Add(s3,10);
         
      
@@ -98,14 +98,14 @@ public class Pokemon : GAgent
 
 
     public void SetStun(bool state) {
-        if (state && !beliefs.HasState(WorldState.Label.stunned))
+        if (state && !beliefs.HasState(WorldState.Label.isStunned))
         {
-            beliefs.ModifyState(WorldState.Label.stunned, 0);
+            beliefs.ModifyState(WorldState.Label.isStunned, 0);
             anim.SetBool("isStunned", true);
             //transform.Rotate(new Vector3(0,0,90));
         }
         else {
-            beliefs.RemoveState(WorldState.Label.stunned);
+            beliefs.RemoveState(WorldState.Label.isStunned);
             anim.SetBool("isStunned", false);
             //transform.Rotate(new Vector3(0,0,-90));
         }

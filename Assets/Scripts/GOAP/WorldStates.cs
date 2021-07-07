@@ -9,16 +9,44 @@ public class WorldState {
 
     public string key;
     public int value;
+    private Dictionary<string, Label> strToLabel;
+
+    
 
     public WorldState(string k, int v) {
         key = k;
         value = v;
+
     }
 
     public WorldState(Label k, int v) : this(getLabel(k), v) {}
         
     public static string getLabel(Label v) {
         return v.ToString();
+    }
+
+    public WorldState.Label GetStateFromString(string s) {
+        switch(s) {
+            case "isHungry":
+                return Label.isHungry;    
+            case "foodEaten":
+                return Label.foodEaten;
+            case "attacking":
+                return Label.attacking;
+            case "hasFood":
+                return Label.hasFood;
+            case "isFull":
+                return Label.isFull;
+            case "availableFood":
+                return Label.availableFood;
+            case "isViolen":
+                return Label.isViolent;
+            case "underAttack":
+                return Label.underAttack;
+            
+            default:
+                return Label.none;
+        }
     }
     //WorldState Labels
      public enum Label {
@@ -31,8 +59,9 @@ public class WorldState {
         isViolent,
         underAttack,
         safeFromAttack,
-        stunned,
-        recovered
+        isStunned,
+        isRecovered,
+        none
         
 
     }

@@ -16,6 +16,7 @@ public class Recover : GAction
     {
         target= gameObject;
         Debug.Log(name + " is starting recovery.");
+        
         return true;
     }
 
@@ -25,8 +26,8 @@ public class Recover : GAction
         duration = 20;
         cost = 1;
         preConditions = new WorldState[1] ;
-        preConditions[0] = new WorldState(WorldState.Label.stunned,0);
+        preConditions[0] = new WorldState(WorldState.Label.isStunned,0);
         afterEffects = new WorldState[1];
-        afterEffects[0] = new WorldState(WorldState.Label.recovered,0);
+        afterEffects[0] = new WorldState(WorldState.Label.isRecovered,0);
     }
 }
