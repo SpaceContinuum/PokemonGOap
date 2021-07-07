@@ -11,10 +11,9 @@ public class Pokemon : GAgent
     private Pokemon.PokemonType weaknessType;
     private Pokemon.PokemonType strengthType;
 
+
     new void Start()
     {
-        gameController = FindObjectOfType<GameController>();
-        gameConfig = gameController.config;
 
 
     new void Start()
@@ -44,6 +43,10 @@ public class Pokemon : GAgent
         SubGoal s4 = new SubGoal(WorldState.Label.safeFromAttack, 10, false);
         goals.Add(s4,10);
 
+        
+        SubGoal s5 = new SubGoal(WorldState.Label.recovered, 10, false);
+        goals.Add(s5,10);
+        
         
         SubGoal s5 = new SubGoal(WorldState.Label.recovered, 10, false);
         goals.Add(s5,10);
