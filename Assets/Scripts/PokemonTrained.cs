@@ -1,7 +1,12 @@
-﻿public class PokemonTrained : Pokemon
+﻿using UnityEngine;
+public class PokemonTrained : Pokemon
 {
-    private int trainingMeter = 70;
 
+    public void SetViolence()
+    {
+        beliefs.ModifyState("isViolent", 0);
+        Debug.Log(gameObject.name + " is violent");
 
+    }
 
 }

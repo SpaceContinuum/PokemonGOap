@@ -87,15 +87,8 @@ public class Pokemon : GAgent
 
         //TODO: move this to the "Eat" function.
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
-        SetViolence();
     }
 
-    public void SetViolence()
-    {
-        beliefs.ModifyState("isViolent", 0);
-        Debug.Log(gameObject.name + " is violent");
-
-    }
 
     public void SetStun(bool state) {
         if (state && !beliefs.HasState(WorldState.Label.stunned))

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7919213213295577484}
   - component: {fileID: 7919213213295577485}
   - component: {fileID: 2168096280837242972}
-  - component: {fileID: 7117629570145855484}
+  - component: {fileID: 8083073701479098716}
   - component: {fileID: 2897658964200801426}
   - component: {fileID: 7619244506498229509}
   - component: {fileID: -6145410261233189876}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce8d09e5c4f8684db3c65508231a11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisAgent: {fileID: 7117629570145855484}
---- !u!114 &7117629570145855484
+  thisAgent: {fileID: 0}
+--- !u!114 &8083073701479098716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,13 +132,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7919213213295577474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92f65f9747e6bc4ab1f94ea9f6add60, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fdb1932ec146744ba22ab02cd84fb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
   actions: []
   currentAction: {fileID: 0}
   gameController: {fileID: 0}
-  myType: 0
+  myType: 3
 --- !u!114 &2897658964200801426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ceb0e068ba5ac24f9f6d121393c2d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
   actionName: FindAvailableFood
   cost: 100
   target: {fileID: 0}
@@ -198,6 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f779ad49253944a99461a3cdd6c614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
   actionName: ConsumeFood
   cost: 1
   target: {fileID: 0}
@@ -225,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc20bc0d77034db43acc420946c8d434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
   actionName: FindFreeSameTypeOpponent
   cost: 1
   target: {fileID: 0}
@@ -252,6 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb0e2086185428488b4b82952a5982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
   actionName: FindFreeWeakTypeOpponent
   cost: 1
   target: {fileID: 0}
