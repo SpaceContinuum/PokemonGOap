@@ -30,7 +30,6 @@ public class WorldState {
         availableFood,
         underAttack,
         safeFromAttack,
-
         stunned,
         recovered
 
@@ -58,6 +57,10 @@ public class WorldStates {
     public bool HasState(string key) {
 
         return states.ContainsKey(key);
+    }
+
+    public bool HasState(WorldState.Label key) {
+        return states.ContainsKey(key.ToString());
     }
 
     // Add to our dictionary
@@ -121,7 +124,15 @@ public class WorldStates {
         return states;
     }
 
-    
+    public new string ToString() {
+        string str = "";
+
+        foreach (KeyValuePair<string, int> state in states) {
+            str+=state.Key+", "+state.Value+"\n";
+        }
+
+        return str;
+    }
 
    
 }

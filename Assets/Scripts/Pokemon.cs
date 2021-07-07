@@ -46,5 +46,17 @@ public class Pokemon : GAgent
 
     }
 
+    public void SetStun(bool state) {
+        if (state && !beliefs.HasState(WorldState.Label.stunned))
+        {
+            beliefs.ModifyState(WorldState.Label.stunned, 0);
+            transform.Rotate(new Vector3(0,0,90));
+        }
+        else {
+            beliefs.RemoveState(WorldState.Label.stunned);
+            transform.Rotate(new Vector3(0,0,-90));
+        }
+    }
+
 
 }

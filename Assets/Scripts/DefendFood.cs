@@ -11,8 +11,7 @@ public class DefendFood : GAction
     public override bool PostPerform()
     {
         beliefs.RemoveState(WorldState.Label.underAttack);
-        beliefs.ModifyState(WorldState.Label.stunned, 1);
-        transform.Rotate(new Vector3(0,0,90));
+        gameObject.GetComponent<Pokemon>().SetStun(true);
 
         return true;
     }

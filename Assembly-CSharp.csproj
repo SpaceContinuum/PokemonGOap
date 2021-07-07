@@ -41,6 +41,7 @@
      <Compile Include="Assets\Scripts\ConsumeFood.cs" />
      <Compile Include="Assets\Scripts\DebugButton.cs" />
      <Compile Include="Assets\Scripts\DebugText.cs" />
+     <Compile Include="Assets\Scripts\DebugUI.cs" />
      <Compile Include="Assets\Scripts\DefendFood.cs" />
      <Compile Include="Assets\Scripts\FightForFood.cs" />
      <Compile Include="Assets\Scripts\Food.cs" />

@@ -160,7 +160,7 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 20
+  duration: 10
   preConditions:
   - key: availableFood
     value: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 15
+  duration: 50
   preConditions:
   - key: hasFood
     value: 0
