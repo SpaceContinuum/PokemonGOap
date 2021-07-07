@@ -6,11 +6,11 @@ public class Pokemon : GAgent
     public enum PokemonType{ NULL, Fire, Water, Grass};
     protected ConfigData gameConfig;
     
-    public GameController gameController;
+    //public GameController gameController;
     [SerializeField] private Pokemon.PokemonType myType = PokemonType.Grass;
     private Pokemon.PokemonType weaknessType;
     private Pokemon.PokemonType strengthType;
-
+    public Animator anim;
 
     new void Start()
     {
@@ -39,7 +39,16 @@ public class Pokemon : GAgent
         SubGoal s4 = new SubGoal(WorldState.Label.recovered, 10, false);
         goals.Add(s4,10);
         
+        anim = GetComponent<Animator>();
+    }
 
+    public void Update() {
+        bool animState =  false;
+        if (currentAction != null) {
+            Vector3 v = currentAction.agent.velocity;
+            animState = (v.magnitude > 0);
+        }
+        anim.SetBool("isWalking", animState);
     }
 
     private void CalculateTypes()
@@ -64,6 +73,7 @@ public class Pokemon : GAgent
         }
     }
 
+    
     public PokemonType GetPokemonType()
     {
         return myType;

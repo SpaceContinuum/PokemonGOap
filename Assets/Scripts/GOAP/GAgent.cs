@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 public class SubGoal {
-
+    
     // Dictionary to store our goals
     public Dictionary<string, int> sGoals;
     // Bool to store if goal should be removed after it has been achieved
@@ -52,8 +52,8 @@ public class GAgent : GBase {
     SubGoal currentGoal;
 
     // Start is called before the first frame update
-    public void Start() {
-
+    public new void Start() {
+        base.Start();
         GAction[] acts = this.GetComponents<GAction>();
         foreach (GAction a in acts) {
 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 2513596857492124592}
   - component: {fileID: 4104006241638097861}
   - component: {fileID: 6865779648086626675}
+  - component: {fileID: 6725615171540266688}
   m_Layer: 0
   m_Name: Pokemon
   m_TagString: Pokemon
@@ -142,6 +143,7 @@ MonoBehaviour:
   gameController: {fileID: 0}
   actions: []
   currentAction: {fileID: 0}
+  myType: 3
 --- !u!114 &2897658964200801426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,3 +348,22 @@ MonoBehaviour:
     value: 0
   agent: {fileID: 0}
   running: 0
+--- !u!95 &6725615171540266688
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdc66b163f3625f4ebf18f2bbf80cabc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
