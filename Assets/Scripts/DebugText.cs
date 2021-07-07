@@ -8,7 +8,6 @@ using UnityEngine.UI;
     /// </summary>
 public class DebugText : MonoBehaviour
 {
-
     private GameController gameController;
     private ConfigData gameConfig;
     public float velocity = 0f;

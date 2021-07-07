@@ -182,22 +182,64 @@ public sealed class GWorld {
         MoveObjectFromTo(f, fightFood, eatenFood);
     }
 
-    private GameObject GetClosestObject(GameObject obj, List<GameObject> ObjList)
+    private GameObject GetClosestObject(GameObject obj, List<GameObject> ObjList, Pokemon.PokemonType ptype= Pokemon.PokemonType.NULL)
     {
         GameObject closestObj = null;
         float minDistance = Mathf.Infinity;
         Vector3 currentPos = obj.transform.position;
-        foreach (GameObject o in ObjList)
+
+        if (ptype == Pokemon.PokemonType.NULL)
         {
-            float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
-            if (dist < minDistance)
+            foreach (GameObject o in ObjList)
             {
-                closestObj = o;
-                minDistance = dist;
+                float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
+                if (dist < minDistance)
+                {
+                    closestObj = o;
+                    minDistance = dist;
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject o in ObjList)
+            {
+
+                if (o.GetComponent<Pokemon>().GetPokemonType() == ptype)
+                {
+                    float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
+                    if (dist < minDistance)
+                    {
+                        closestObj = o;
+                        minDistance = dist;
+                    }
+                }
             }
         }
 
         return closestObj;
+    }
+
+    public Pokemon GetClosestFreePokemon(GameObject obj, Pokemon.PokemonType ptype)
+    {
+        GameObject closestObj = GetClosestObject(obj, freePokemon, ptype);
+        if (closestObj != null)
+        {
+            return closestObj.GetComponent<Pokemon>();
+        }
+
+        return null;
+    }
+
+    public Pokemon GetClosestEatingPokemon(GameObject obj, Pokemon.PokemonType ptype)
+    {
+        GameObject closestObj = GetClosestObject(obj, eatingPokemon, ptype);
+        if (closestObj != null)
+        {
+            return closestObj.GetComponent<Pokemon>();
+        }
+
+        return null;
     }
 
     public Food GetClosestFreeFood(GameObject obj)
@@ -244,6 +286,18 @@ public sealed class GWorld {
             GameObject.Destroy(f);
         }
         else Debug.Log("Trying to remove Food not currently in eatenFood");
+    }
+
+    public bool InitFight(Pokemon p)
+    {
+        if (p == null) return false;
+
+        if (freePokemon.Contains(p.gameObject))
+        {
+            PokemonFree2Eating(p.gameObject);
+            return true;
+        }
+        else return false; //food is already claimed. Pokemon sad (or fight?).
     }
 
     public static GWorld Instance {

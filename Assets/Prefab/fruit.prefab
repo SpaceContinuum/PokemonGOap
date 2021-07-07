@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5741bd84d87bf4faaa6e4646914a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 3681172623689653610, guid: f945c692cf268714197b961d4e8eb888, type: 3}
   destroyTimer: 10
+  owner: {fileID: 0}

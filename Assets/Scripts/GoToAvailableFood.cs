@@ -12,6 +12,7 @@ public class GoToAvailableFood : GAction
         bool possession = GWorld.Instance.ClaimFood(target.GetComponent<Food>());
         if (possession) {
             Debug.Log(gameObject.name + " has claimed " + target.name);
+            target.GetComponent<Food>().owner = gameObject;
             inventory.AddItem(target);
             return true;
         }
@@ -21,7 +22,7 @@ public class GoToAvailableFood : GAction
             return false; //could not secure the food
         }
     }
-
+/*
     public new int cost { 
         get {
             Food f = GWorld.Instance.GetClosestFreeFood(gameObject);
@@ -30,26 +31,28 @@ public class GoToAvailableFood : GAction
             agent.CalculatePath(f.transform.position, path);
             return (int)(PathLength(path));
         }
-    }
+    }*/
     public override bool PrePerform()
     {
         target = GWorld.Instance.GetClosestFreeFood(gameObject).gameObject;
         if (target == null) {
-            Debug.Log(gameObject.name + " is going towards " + target.name);
+                Debug.Log(gameObject.name + " couldn't find food");    
                 return false;
         }
-        Debug.Log(gameObject.name + " couldn't find food");
+        Debug.Log(gameObject.name + " is going towards " + target.name);
+        
         return true;
     }
 
     public override void Reset()
     {
+        cost = 1;
         duration = 10;
         actionName = "FindAvailableFood";
         
-        preConditions = new WorldState[2];
+        preConditions = new WorldState[1];
         preConditions[0] = new WorldState("availableFood", 0);
-        preConditions[1] = new WorldState("isHungry", 0);
+        //preConditions[1] = new WorldState("isHungry", 0);
         afterEffects = new WorldState[1];
         afterEffects[0] = new WorldState("hasFood", 0);
  

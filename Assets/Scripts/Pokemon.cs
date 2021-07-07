@@ -3,39 +3,91 @@
 public class Pokemon : GAgent
 {
 
+    public enum PokemonType{ NULL, Fire, Water, Grass};
     protected ConfigData gameConfig;
     
     public GameController gameController;
+    [SerializeField] private Pokemon.PokemonType myType = PokemonType.Grass;
+    private Pokemon.PokemonType weaknessType;
+    private Pokemon.PokemonType strengthType;
+
     new void Start()
     {
         gameController = FindObjectOfType<GameController>();
         gameConfig = gameController.config;
 
+
+    new void Start()
+    {
+
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"
-        SubGoal s1 = new SubGoal("isFull", 5, false);
+        SubGoal s1 = new SubGoal(WorldState.Label.isFull, 5, false);
         // Add it to the goals
         goals.Add(s1, 3);
 
         // Set up the subgoal "isFighting"
-        SubGoal s2 = new SubGoal("isFighting", 1, false);
+        SubGoal s2 = new SubGoal("isPeaceful", 1, false);
         // Add it to the goals
         goals.Add(s2, 5);
-
-        // Set up the subgoal "isHiding"
-        SubGoal s3 = new SubGoal("isHiding", 3, false);
-        // Add it to the goals
-        goals.Add(s3, 1);
 
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);
+
+    // Set up the subgoal "isHiding"
+        SubGoal s3 = new SubGoal("isHiding", 3, false);
+        // Add it to the goals
+        goals.Add(s3, 1);
+
+        SubGoal s4 = new SubGoal(WorldState.Label.safeFromAttack, 10, false);
+        goals.Add(s4,10);
+
         
+        SubGoal s5 = new SubGoal(WorldState.Label.recovered, 10, false);
+        goals.Add(s5,10);
+        
+
     }
 
+    private void CalculateTypes()
+    {
+        switch(myType)
+        {
+            case PokemonType.Grass:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/spr_bw_001");
+                weaknessType = PokemonType.Fire;
+                strengthType = PokemonType.Water;
+                break;
+            case PokemonType.Fire:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/spr_bw_498");
+                weaknessType = PokemonType.Water;
+                strengthType = PokemonType.Grass;
+                break;
+            case PokemonType.Water:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/spr_bw_393");
+                weaknessType = PokemonType.Grass;
+                strengthType = PokemonType.Fire;
+                break;
+        }
+    }
 
-   
+    public PokemonType GetPokemonType()
+    {
+        return myType;
+    }
+
+    public PokemonType GetWeaknessType()
+    {
+        return weaknessType;
+    }
+
+    public PokemonType GetStrengthType()
+    {
+        return strengthType;
+    }
+
     public void GetHungry() {
         beliefs.ModifyState("isHungry", 0);
         //call the get hungry method over and over at random times to make the Pokemon
@@ -44,6 +96,13 @@ public class Pokemon : GAgent
 
         //TODO: move this to the "Eat" function.
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
+        SetViolence();
+    }
+
+    public void SetViolence()
+    {
+        beliefs.ModifyState("isViolent", 0);
+        Debug.Log(gameObject.name + " is violent");
 
     }
 

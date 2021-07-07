@@ -2,10 +2,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class GAction : MonoBehaviour {
+public abstract class GAction : GBase {
 
     // Name of the action
     public string actionName = "Action";
+
     // Cost of the action
     public float cost = 1.0f;
     // Target where the action is going to take place

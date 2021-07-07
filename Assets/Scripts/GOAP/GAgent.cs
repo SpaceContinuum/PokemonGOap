@@ -16,9 +16,11 @@ public class SubGoal {
         sGoals.Add(s, i);
         remove = r;
     }
+
+    public SubGoal(WorldState.Label label, int i, bool r) : this(label.ToString(), i, r) {}
 }
 
-public class GAgent : MonoBehaviour {
+public class GAgent : GBase {
 
     // Store our list of actions
     public List<GAction> actions = new List<GAction>();
@@ -33,6 +35,17 @@ public class GAgent : MonoBehaviour {
     GPlanner planner;
     // Action Queue
     Queue<GAction> actionQueue;
+    public GAction[] actionQueueToArray {
+        get {
+            if (actionQueue != null) {
+                GAction[] result = new GAction[actionQueue.Count];
+                actionQueue.CopyTo(result, 0);
+                return result;
+            }
+            else return null;
+
+        }
+    }
     // Our current action
     public GAction currentAction;
     // Our subgoal
@@ -58,7 +71,24 @@ public class GAgent : MonoBehaviour {
         invoked = false;
     }
 
+    public void Interrupt() {
+        CancelInvoke("CompleteAction");
+        currentAction = null;
+        planner = null;
+        actionQueue = null;
+
+    }
+
+    bool prevHasPath= false;
     void LateUpdate() {
+
+        //Debugging section.
+/*
+        if (prevHasPath != currentAction.agent.hasPath) {
+            Debug.Log(name + " changed hasPath status. CurrentAction: " + currentAction.actionName + ", target: "+ currentAction.target.name);
+        }
+        prevHasPath = currentAction.agent.hasPath;
+  */      
 
         //if there's a current action and it is still running
         if (currentAction != null && currentAction.running) {
@@ -79,6 +109,7 @@ public class GAgent : MonoBehaviour {
 
                         //if the action movement is complete wait
                         //a certain duration for it to be completed
+                        //Debug.Log(name + " running CompleteAction on "+currentAction);
                         Invoke("CompleteAction", currentAction.duration);
                         invoked = true;
                     }
@@ -142,7 +173,7 @@ public class GAgent : MonoBehaviour {
                     // Activate the current action
                     currentAction.running = true;
                     // Pass Unities AI the destination for the agent
-                    currentAction.MoveToTarget(currentAction.target.transform,0);
+                    currentAction.MoveToTarget(currentAction.target.transform,0.5f);
                 }
             } else {
 
@@ -150,5 +181,9 @@ public class GAgent : MonoBehaviour {
                 actionQueue = null;
             }
         }
+    }
+
+    public void OnMouseOver() {
+        Debug.Log(name + " mouse over me.");
     }
 }

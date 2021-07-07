@@ -7,6 +7,8 @@ public class Food : MonoBehaviour
     private FoodManager spawner;
     //private bool eaten = false;
     public float destroyTimer = 10.0f;
+    public GameObject owner;
+
     // Start is called before the first frame update
     void Start()
     {
