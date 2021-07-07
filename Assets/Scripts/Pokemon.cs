@@ -16,9 +16,6 @@ public class Pokemon : GAgent
     {
 
 
-    new void Start()
-    {
-
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"
@@ -34,22 +31,13 @@ public class Pokemon : GAgent
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);
-
-    // Set up the subgoal "isHiding"
-        SubGoal s3 = new SubGoal("isHiding", 3, false);
-        // Add it to the goals
-        goals.Add(s3, 1);
-
-        SubGoal s4 = new SubGoal(WorldState.Label.safeFromAttack, 10, false);
+        
+        SubGoal s3 = new SubGoal(WorldState.Label.recovered, 10, false);
+        goals.Add(s3,10);
+        
+        
+        SubGoal s4 = new SubGoal(WorldState.Label.recovered, 10, false);
         goals.Add(s4,10);
-
-        
-        SubGoal s5 = new SubGoal(WorldState.Label.recovered, 10, false);
-        goals.Add(s5,10);
-        
-        
-        SubGoal s5 = new SubGoal(WorldState.Label.recovered, 10, false);
-        goals.Add(s5,10);
         
 
     }
