@@ -78,7 +78,17 @@ public class GAgent : GBase {
         actionQueue = null;
 
     }
+
+    bool prevHasPath= false;
     void LateUpdate() {
+
+        //Debugging section.
+/*
+        if (prevHasPath != currentAction.agent.hasPath) {
+            Debug.Log(name + " changed hasPath status. CurrentAction: " + currentAction.actionName + ", target: "+ currentAction.target.name);
+        }
+        prevHasPath = currentAction.agent.hasPath;
+  */      
 
         //if there's a current action and it is still running
         if (currentAction != null && currentAction.running) {
@@ -99,6 +109,7 @@ public class GAgent : GBase {
 
                         //if the action movement is complete wait
                         //a certain duration for it to be completed
+                        //Debug.Log(name + " running CompleteAction on "+currentAction);
                         Invoke("CompleteAction", currentAction.duration);
                         invoked = true;
                     }
@@ -162,7 +173,7 @@ public class GAgent : GBase {
                     // Activate the current action
                     currentAction.running = true;
                     // Pass Unities AI the destination for the agent
-                    currentAction.MoveToTarget(currentAction.target.transform,0);
+                    currentAction.MoveToTarget(currentAction.target.transform,0.5f);
                 }
             } else {
 

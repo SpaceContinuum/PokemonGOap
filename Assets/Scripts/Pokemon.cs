@@ -18,7 +18,7 @@ public class Pokemon : GAgent
         // Add it to the goals
         goals.Add(s2, 5);
 
-        // Set up the subgoal "isHiding"
+    // Set up the subgoal "isHiding"
         SubGoal s3 = new SubGoal("isHiding", 3, false);
         // Add it to the goals
         goals.Add(s3, 1);

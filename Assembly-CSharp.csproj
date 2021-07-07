@@ -41,6 +41,8 @@
      <Compile Include="Assets\Scripts\ConsumeFood.cs" />
      <Compile Include="Assets\Scripts\DebugButton.cs" />
      <Compile Include="Assets\Scripts\DebugText.cs" />
+     <Compile Include="Assets\Scripts\DefendFood.cs" />
+     <Compile Include="Assets\Scripts\FightForFood.cs" />
      <Compile Include="Assets\Scripts\Food.cs" />
      <Compile Include="Assets\Scripts\FoodManager.cs" />
      <Compile Include="Assets\Scripts\GBase.cs" />
@@ -57,6 +59,7 @@
      <Compile Include="Assets\Scripts\Pokemon.cs" />
      <Compile Include="Assets\Scripts\PokemonMovement.cs" />
      <Compile Include="Assets\Scripts\PokemonTrained.cs" />
+     <Compile Include="Assets\Scripts\Recover.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Microsoft VS Code/bin/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

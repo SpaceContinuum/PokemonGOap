@@ -39,7 +39,6 @@ public class ConsumeFood : GAction
         
         preConditions[1] = new WorldState(WorldState.Label.isHungry, 0);
         afterEffects = new WorldState[1];
-
         
         afterEffects[0] = new WorldState(WorldState.Label.isFull, 0);
 
