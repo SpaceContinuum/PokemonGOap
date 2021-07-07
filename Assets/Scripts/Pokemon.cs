@@ -15,7 +15,7 @@ public class Pokemon : GAgent
     new void Start()
     {
 
-
+        CalculateTypes();
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"
