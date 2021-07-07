@@ -21,7 +21,7 @@ public class GoToFreeWeakTypeOpponent : GoToFreeOpponent
         preConditions[0] = new WorldState("availablePokemon", 0);
         preConditions[1] = new WorldState("isViolent", 0);
         afterEffects = new WorldState[1];
-        afterEffects[0] = new WorldState("fighting", 0);
+        afterEffects[0] = new WorldState("attacking", 0);
 
     }
 

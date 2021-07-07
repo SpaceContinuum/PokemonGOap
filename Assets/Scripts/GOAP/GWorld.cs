@@ -303,10 +303,22 @@ public sealed class GWorld {
 
         if (freePokemon.Contains(p.gameObject))
         {
-            PokemonFree2Eating(p.gameObject);
+            PokemonFree2Fighting(p.gameObject);
             return true;
         }
-        else return false; //food is already claimed. Pokemon sad (or fight?).
+        else return false; //Pokemon is already eating? Should it try to init food fight?
+    }
+
+    public bool InitFoodFight(Pokemon p)
+    {
+        if (p == null) return false;
+
+        if (eatingPokemon.Contains(p.gameObject))
+        {
+            PokemonEating2Fighting(p.gameObject);
+            return true;
+        }
+        else return false; //Pokemon is already fighting?
     }
 
     public static GWorld Instance {

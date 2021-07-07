@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class GoToFreeOpponent : GAction
+public abstract class GoToEatingOpponent : GAction
 {
     protected Pokemon p;
     protected Pokemon.PokemonType myType;
@@ -18,22 +18,22 @@ public abstract class GoToFreeOpponent : GAction
             int coef;
             if (targetType == myType)
             {
-                coef = 2;
+                coef = 3;
             }
             else if (targetType == strengthType)
             {
-                coef = 1;
+                coef = 2;
             }
-            else 
+            else
             {
                 coef = 100;
             }
 
-            Pokemon p = GWorld.Instance.GetClosestFreePokemon(gameObject, targetType);
+            Pokemon p = GWorld.Instance.GetClosestEatingPokemon(gameObject, targetType);
             NavMeshPath path = new NavMeshPath();
 
             agent.CalculatePath(p.transform.position, path);
-            return coef*(int)(PathLength(path));
+            return coef * (int)(PathLength(path));
         }
     }
 
@@ -41,7 +41,7 @@ public abstract class GoToFreeOpponent : GAction
     {
         Debug.Log(gameObject.name + " has reached pokemon to fight");
         //init fight with an available pokemon and remove both from availability
-        bool fighting = GWorld.Instance.InitFight(target.GetComponent<Pokemon>());
+        bool fighting = GWorld.Instance.InitFoodFight(target.GetComponent<Pokemon>());
         if (fighting)
         {
             Debug.Log(gameObject.name + " initiated a fight with " + target.name);
@@ -59,7 +59,7 @@ public abstract class GoToFreeOpponent : GAction
 
     public override bool PrePerform()
     {
-        target = GWorld.Instance.GetClosestFreePokemon(gameObject, targetType).gameObject;
+        target = GWorld.Instance.GetClosestEatingPokemon(gameObject, targetType).gameObject;
         if (target == null)
         {
             Debug.Log(gameObject.name + " is going towards " + target.name);
@@ -73,5 +73,4 @@ public abstract class GoToFreeOpponent : GAction
     {
         return targetType;
     }
-
 }

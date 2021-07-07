@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GoToFreeSameTypeOpponent : GoToFreeOpponent
+public class GoToEatingWeakTypeOpponent : GoToEatingOpponent
 {
 
     public override void Reset()
     {
         p = gameObject.GetComponent<Pokemon>();
         duration = 5;
-        actionName = "FindFreeSameTypeOpponent";
+        actionName = "FindEatingeWeakTypeOpponent";
         myType = p.GetPokemonType();
         weaknessType = p.GetWeaknessType();
         strengthType = p.GetStrengthType();
 
-        targetType = myType;
+        targetType = weaknessType;
 
         preConditions = new WorldState[2];
         preConditions[0] = new WorldState("availablePokemon", 0);

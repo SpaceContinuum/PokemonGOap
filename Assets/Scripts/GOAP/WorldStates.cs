@@ -28,10 +28,12 @@ public class WorldState {
         hasFood,
         isFull,
         availableFood,
+        isViolent,
         underAttack,
         safeFromAttack,
         stunned,
         recovered
+        
 
     }
     

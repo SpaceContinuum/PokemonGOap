@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GoToFreeSameTypeOpponent : GoToFreeOpponent
+public class GoToEatingSameTypeOpponent : GoToEatingOpponent
 {
 
     public override void Reset()
     {
         p = gameObject.GetComponent<Pokemon>();
         duration = 5;
-        actionName = "FindFreeSameTypeOpponent";
+        actionName = "FindEatingeSameTypeOpponent";
         myType = p.GetPokemonType();
         weaknessType = p.GetWeaknessType();
         strengthType = p.GetStrengthType();

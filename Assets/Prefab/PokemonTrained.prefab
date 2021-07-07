@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: -6145410261233189876}
   - component: {fileID: -1491119716359887357}
   - component: {fileID: 1455925618345100868}
+  - component: {fileID: -6502659247418862077}
+  - component: {fileID: -3816534193099165610}
   m_Layer: 0
   m_Name: PokemonTrained
   m_TagString: Pokemon
@@ -263,6 +265,64 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: FindFreeWeakTypeOpponent
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: availablePokemon
+    value: 0
+  - key: isViolent
+    value: 0
+  afterEffects:
+  - key: fighting
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &-6502659247418862077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14b57175c9f3dd4ea8ea220dfc9079d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: FindEatingeSameTypeOpponent
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: availablePokemon
+    value: 0
+  - key: isViolent
+    value: 0
+  afterEffects:
+  - key: fighting
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &-3816534193099165610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be4528935ec2ea4d951882c1697d8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: FindEatingeWeakTypeOpponent
   cost: 1
   target: {fileID: 0}
   targetTag: 
