@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -65,9 +66,13 @@ public abstract class GAction : GBase {
         if (afterEffects != null) {
 
             foreach (WorldState w in afterEffects) {
-
+                try {
                 // Add each item to our Dictionary
                 effects.Add(w.key, w.value);
+                }
+                catch (ArgumentException e) {
+                    Debug.Log(gameObject.name + " exception trying to add " + w.key + " in action " + actionName);
+                }
             }
         }
         // Populate our inventory

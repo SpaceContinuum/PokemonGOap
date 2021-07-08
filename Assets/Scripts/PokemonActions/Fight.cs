@@ -47,7 +47,7 @@ public class Fight : GAction
     public override void Reset()
     {
         actionName = "Fight";
-        cost = 3;
+        cost = 1;
         duration = 5;
         preConditions = new WorldState[1];
         preConditions[0] = new WorldState(WorldState.Label.attacking, 0);

@@ -4230,13 +4230,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6309319930076814373, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
+      propertyPath: cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309319930076814373, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
       propertyPath: afterEffects.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6309319930076814373, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
+      propertyPath: preConditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309319930076814373, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
       propertyPath: afterEffects.Array.data[1].key
-      value: isPeaceful
+      value: hasFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309319930076814373, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: preConditions.Array.data[1].key
+      value: attackingForFood
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577474, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}

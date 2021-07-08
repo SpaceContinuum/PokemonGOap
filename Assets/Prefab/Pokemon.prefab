@@ -145,6 +145,7 @@ MonoBehaviour:
   actions: []
   currentAction: {fileID: 0}
   myType: 3
+  anim: {fileID: 0}
 --- !u!114 &2897658964200801426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,16 +308,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 0}
   gameController: {fileID: 0}
-  actionName: FightForFood
-  cost: 3
+  actionName: Fight
+  cost: 1
   target: {fileID: 0}
   targetTag: 
   duration: 5
   preConditions:
   - key: attacking
     value: 0
+  - key: attackingForFood
+    value: 0
   afterEffects:
   - key: isPeaceful
+    value: 0
+  - key: hasFood
     value: 0
   agent: {fileID: 0}
   running: 0
