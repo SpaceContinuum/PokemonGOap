@@ -13,24 +13,31 @@ public class GoToOccupiedFood : GAction
                 return false;
         }
         Debug.Log(name + " is moving towards "+target.name);
-        return true;    }
+        return true;
+    }
 
     public override bool PostPerform()
-    {   
+    {
+        Pokemon p = gameObject.GetComponent<Pokemon>();
         Food f = target.GetComponent<Food>();
         if (target != null && f != null && f.owner != null ) { //food is still there and it is being held by another pokemon!
             GameObject owner = f.owner; 
 
             Pokemon other = owner.GetComponent<Pokemon>();
-            if (other == null) {
+            if (other == null || other.GetOpponent() != null || p.GetOpponent() != null) {
                 Debug.Log(name + " trying to attack a non-pokemon " + owner.name);
                 return false;
             }
             //Declare attack on opponent
+            other.SetOpponent(p);
             Debug.Log(gameObject.name + " attacking " + other.name + " for " + target.name);
-            other.Interrupt();
-            other.beliefs.ModifyState("underAttack",1);
+            other.beliefs.ModifyState("isDefensive", 1);
+            other.Interrupt();      
             other.inventory.AddItem(gameObject);
+            GWorld.Instance.PokemonEating2Fighting(owner);
+
+            GWorld.Instance.PokemonFree2Fighting(gameObject);
+            p.SetOpponent(other);
             beliefs.ModifyState("attacking", 1);
             inventory.AddItem(other.gameObject);
 
@@ -57,9 +64,9 @@ public class GoToOccupiedFood : GAction
         duration = 10;
         cost = 5;
         actionName = "GoToOccupiedFood";
-        preConditions = new WorldState[1];
+        preConditions = new WorldState[2];
         preConditions[0] = new WorldState("foodEaten", 0);
-        //preConditions[1] = new WorldState("isHungry", 0);
+        preConditions[1] = new WorldState("isHungry", 0);
         afterEffects = new WorldState[1];
         afterEffects[0] = new WorldState("attacking", 0);
     }

@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightForFood : GAction
+public class Fight : GAction
 {
     GameObject attackTarget;
     Pokemon p;
     public override bool PostPerform()
     {
-        GameObject f = inventory.FindItemWithTag("Food");
         p = GetComponent<Pokemon>();
         if (p.IsWinning(attackTarget.GetComponent<Pokemon>()))
         {
-            // Give up our food and stun opponent
-            attackTarget.GetComponent<GAgent>().inventory.RemoveItem(f);
-            gameObject.GetComponent<GAgent>().inventory.AddItem(f);
+            // stun opponent
             GWorld.Instance.PokemonFighting2Free(gameObject);
         }
         else
@@ -32,7 +29,8 @@ public class FightForFood : GAction
     public override bool PrePerform()
     {
         attackTarget = inventory.FindItemWithTag("Pokemon");
-        if (attackTarget == null) {
+        if (attackTarget == null)
+        {
             return false;
         }
         inventory.RemoveItem(attackTarget);
@@ -41,14 +39,13 @@ public class FightForFood : GAction
 
     public override void Reset()
     {
-        actionName = "FightForFood";
+        actionName = "Fight";
         cost = 3;
         duration = 5;
         preConditions = new WorldState[1];
         preConditions[0] = new WorldState(WorldState.Label.attacking, 0);
-        afterEffects = new WorldState[2];
-        afterEffects[0] = new WorldState(WorldState.Label.hasFood, 0);
-        afterEffects[1] = new WorldState(WorldState.Label.isPeaceful, 0);
+        afterEffects = new WorldState[1];
+        afterEffects[0] = new WorldState(WorldState.Label.isPeaceful, 0);
 
     }
 }

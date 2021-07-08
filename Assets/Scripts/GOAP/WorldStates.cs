@@ -29,6 +29,8 @@ public class WorldState {
         isFull,
         availableFood,
         isViolent,
+        isDefensive,
+        isPeaceful,
         underAttack,
         safeFromAttack,
         stunned,

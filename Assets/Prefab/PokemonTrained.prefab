@@ -20,6 +20,12 @@ GameObject:
   - component: {fileID: 1455925618345100868}
   - component: {fileID: -6502659247418862077}
   - component: {fileID: -3816534193099165610}
+  - component: {fileID: 6309319930076814373}
+  - component: {fileID: 8324274649769726848}
+  - component: {fileID: -8331455294042487746}
+  - component: {fileID: 3419963867915672824}
+  - component: {fileID: -1061212589438084475}
+  - component: {fileID: -3032813334267872898}
   m_Layer: 0
   m_Name: PokemonTrained
   m_TagString: Pokemon
@@ -141,7 +147,6 @@ MonoBehaviour:
   gameController: {fileID: 0}
   actions: []
   currentAction: {fileID: 0}
-  gameController: {fileID: 0}
   myType: 3
 --- !u!114 &2897658964200801426
 MonoBehaviour:
@@ -334,6 +339,170 @@ MonoBehaviour:
     value: 0
   afterEffects:
   - key: fighting
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &6309319930076814373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810eb3512b921a74c816dd3a7b3ab998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: FightForFood
+  cost: 3
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: attacking
+    value: 0
+  afterEffects:
+  - key: hasFood
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &8324274649769726848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c90de2ad6cafc4582c065ed4a9e2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: DefendFood
+  cost: 0
+  target: {fileID: 0}
+  targetTag: 
+  duration: 3
+  preConditions:
+  - key: isDefensive
+    value: 0
+  - key: hasFood
+    value: 0
+  afterEffects:
+  - key: 
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &-8331455294042487746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7264509af3a384486c4bbe2d1419fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: Recover
+  cost: 0
+  target: {fileID: 0}
+  targetTag: 
+  duration: 20
+  preConditions:
+  - key: stunned
+    value: 0
+  afterEffects:
+  - key: recovered
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &3419963867915672824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc4b9cd93722184d99b60b8b0f7cd92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: Defend
+  cost: 0
+  target: {fileID: 0}
+  targetTag: 
+  duration: 3
+  preConditions:
+  - key: isDefensive
+    value: 0
+  afterEffects:
+  - key: isPeaceful
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &-1061212589438084475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43ac87bd07123048ae89f9d2a9e6c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: Fight
+  cost: 3
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: attacking
+    value: 0
+  afterEffects:
+  - key: isPeaceful
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &-3032813334267872898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4516207a9bd6c640b226ae2cd93cf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: GoToOccupiedFood
+  cost: 5
+  target: {fileID: 0}
+  targetTag: 
+  duration: 10
+  preConditions:
+  - key: foodEaten
+    value: 0
+  afterEffects:
+  - key: attacking
     value: 0
   agent: {fileID: 0}
   running: 0

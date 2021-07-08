@@ -67,6 +67,7 @@ public class GAgent : GBase {
     public void CompleteAction() {
 
         currentAction.running = false;
+        //TODO: fix null derefernce
         currentAction.PostPerform();
         invoked = false;
     }

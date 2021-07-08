@@ -39,21 +39,39 @@ public abstract class GoToFreeOpponent : GAction
 
     public override bool PostPerform()
     {
+
+        Pokemon p = gameObject.GetComponent<Pokemon>();
         Debug.Log(gameObject.name + " has reached pokemon to fight");
         //init fight with an available pokemon and remove both from availability
-        bool fighting = GWorld.Instance.InitFight(target.GetComponent<Pokemon>());
-        if (fighting)
+        //bool fighting = GWorld.Instance.InitFoodFight(target.GetComponent<Pokemon>());
+        if (/*fighting &&*/ target != null )
         {
             Debug.Log(gameObject.name + " initiated a fight with " + target.name);
             GWorld.Instance.PokemonFree2Fighting(gameObject);
+
+            Pokemon other = target.GetComponent<Pokemon>();
+            if (other == null || other.GetOpponent() != null || p.GetOpponent() != null)
+            {
+                Debug.Log(name + " trying to attack a non-pokemon " + target.name);
+                target = null;
+                return false;
+            }
+            //Declare attack on opponent
+            other.SetOpponent(p);
+            Debug.Log(gameObject.name + " attacking " + other.name + " for " + target.name);
+            other.beliefs.ModifyState("isDefensive", 1);
+            other.Interrupt();
+            other.inventory.AddItem(gameObject);
+            GWorld.Instance.PokemonFree2Fighting(target);
+
+            p.SetOpponent(other);
+            beliefs.ModifyState("attacking", 1);
+            inventory.AddItem(other.gameObject);
+
             return true;
         }
-        else
-        {
-            Debug.Log(gameObject + " did not initiate a fight with " + target.name);
-            target = null;
-            return false; //could not secure fight
-        }
+
+        return false;
     }
 
 
