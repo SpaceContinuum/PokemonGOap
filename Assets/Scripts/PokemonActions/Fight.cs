@@ -15,6 +15,8 @@ public class Fight : GAction
             //loot them
             p.Loot(attackTarget.GetComponent<Pokemon>());
             GWorld.Instance.PokemonFighting2Free(gameObject);
+            beliefs.ModifyState(WorldState.Label.isPeaceful, 1);
+            beliefs.RemoveState(WorldState.Label.isViolent);
         }
         else
         {
@@ -25,7 +27,7 @@ public class Fight : GAction
         }
 
         beliefs.RemoveState(WorldState.Label.attacking);
-        beliefs.RemoveState(WorldState.Label.isViolent);
+        
 
         return true;
     }

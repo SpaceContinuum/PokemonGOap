@@ -70,6 +70,7 @@ public abstract class GoToEatingOpponent : GAction
 
         p.SetOpponent(other);
         beliefs.ModifyState("attacking", 1);
+        beliefs.ModifyState("attackingForFood", 1);
         inventory.AddItem(other.gameObject);
 
         return true;
