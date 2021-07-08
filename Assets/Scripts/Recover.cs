@@ -14,6 +14,7 @@ public class Recover : GAction
     public override bool PrePerform()
     {
         Debug.Log(name + " is starting recovery.");
+        target = gameObject;
         return true;
     }
 
