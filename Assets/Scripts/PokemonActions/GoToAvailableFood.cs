@@ -23,7 +23,7 @@ public class GoToAvailableFood : GAction
         }
     }
 
-    public new int cost { 
+    public override float cost { 
         get {
             Food f = GWorld.Instance.GetClosestFreeFood(gameObject);
             NavMeshPath path = new NavMeshPath();
@@ -46,7 +46,7 @@ public class GoToAvailableFood : GAction
 
     public override void Reset()
     {
-        //cost = 1;
+        
         duration = 10;
         actionName = "FindAvailableFood";
         

@@ -11,7 +11,7 @@ public abstract class GoToEatingOpponent : GAction
     protected Pokemon.PokemonType strengthType;
     protected Pokemon.PokemonType targetType;
 
-    public new int cost
+    public override float cost
     {
         get
         {
@@ -33,6 +33,8 @@ public abstract class GoToEatingOpponent : GAction
             NavMeshPath path = new NavMeshPath();
 
             agent.CalculatePath(p.transform.position, path);
+            Debug.Log(gameObject.name + " cost to attacking eater " + p.name + ": "+coef );
+
             return coef * (int)(PathLength(path));
         }
     }

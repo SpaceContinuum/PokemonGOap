@@ -186,7 +186,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.185
-  m_Speed: 3.5
+  m_Speed: 0.2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -305,13 +305,15 @@ MonoBehaviour:
   targetTag: 
   duration: 5
   preConditions:
-  - key: availablePokemon
-    value: 0
   - key: isViolent
+    value: 0
+  - key: eatingPokemon
     value: 0
   afterEffects:
   - key: attacking
-    value: 0
+    value: 1
+  - key: attackingForFood
+    value: 1
   agent: {fileID: 0}
   running: 0
 --- !u!114 &-3816534193099165610
@@ -336,9 +338,13 @@ MonoBehaviour:
   preConditions:
   - key: isViolent
     value: 0
+  - key: eatingPokemon
+    value: 0
   afterEffects:
   - key: attacking
-    value: 0
+    value: 1
+  - key: attackingForFood
+    value: 1
   agent: {fileID: 0}
   running: 0
 --- !u!114 &6309319930076814373
@@ -356,15 +362,19 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: FightForFood
-  cost: 3
+  cost: 1
   target: {fileID: 0}
   targetTag: 
   duration: 5
   preConditions:
-  - key: attacking
+  - key: attackingForFood
+    value: 0
+  - key: isHungry
     value: 0
   afterEffects:
   - key: isPeaceful
+    value: 0
+  - key: hasFood
     value: 0
   agent: {fileID: 0}
   running: 0
@@ -402,7 +412,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7919213213295577474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdc4b9cd93722184d99b60b8b0f7cd92, type: 3}
   m_Name: 
@@ -429,7 +439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7919213213295577474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e43ac87bd07123048ae89f9d2a9e6c4b, type: 3}
   m_Name: 

@@ -68,7 +68,7 @@ public class DefendFood : GAction
     {
         actionName = "DefendFood";
         duration = 3;
-        cost = 0; //this should always be a priority since there's no alternative.
+        cost = 1; //this should always be a priority since there's no alternative.
         preConditions = new WorldState[1];
         preConditions[0] = new WorldState(WorldState.Label.isDefensive, 0);
         //preConditions[1] = new WorldState(WorldState.Label.hasFood, 0);

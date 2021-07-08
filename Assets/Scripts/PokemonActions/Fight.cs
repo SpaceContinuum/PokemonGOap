@@ -8,6 +8,7 @@ public class Fight : GAction
     Pokemon p;
     public override bool PostPerform()
     {
+        bool outcome = false;
         p = GetComponent<Pokemon>();
         if (p.IsWinning(attackTarget.GetComponent<Pokemon>()))
         {
@@ -17,6 +18,7 @@ public class Fight : GAction
             GWorld.Instance.PokemonFighting2Free(gameObject);
             beliefs.ModifyState(WorldState.Label.isPeaceful, 1);
             beliefs.RemoveState(WorldState.Label.isViolent);
+            outcome = true;
         }
         else
         {
@@ -24,12 +26,11 @@ public class Fight : GAction
             //they loot us
             attackTarget.GetComponent<Pokemon>().Loot(p);
             GWorld.Instance.PokemonFighting2Stunned(gameObject);
+
         }
 
         beliefs.RemoveState(WorldState.Label.attacking);
-        
-
-        return true;
+        return outcome;
     }
 
     public override bool PrePerform()

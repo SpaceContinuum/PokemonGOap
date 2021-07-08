@@ -47,7 +47,7 @@ public class Defend : GAction
     {
         actionName = "Defend";
         duration = 3;
-        cost = 0; //this should always be a priority since there's no alternative.
+        cost = 1; //this should always be a priority since there's no alternative.
         preConditions = new WorldState[2];
         preConditions[0] = new WorldState(WorldState.Label.isDefensive, 0);
         afterEffects = new WorldState[1];

@@ -64,7 +64,7 @@ public sealed class GWorld {
         // Inform the state
         if (pokemons.Length > 0)
         {
-            world.ModifyState("AvailablePokemon", pokemons.Length);
+            world.ModifyState(WorldState.Label.availablePokemon, pokemons.Length);
         }
 
 

@@ -110,7 +110,7 @@ public class GAgent : GBase {
 
                         //if the action movement is complete wait
                         //a certain duration for it to be completed
-                        Debug.Log(name + " running CompleteAction on "+currentAction);
+                        //Debug.Log(name + " running CompleteAction on "+currentAction);
                         Invoke("CompleteAction", currentAction.duration);
                         invoked = true;
                     }

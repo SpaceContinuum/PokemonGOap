@@ -11,10 +11,9 @@ public class FightForFood : Fight
         
         actionName = "FightForFood";
 
-        WorldState[] preConsNew = new WorldState[preConditions.Length+1];
-        preConditions.CopyTo(preConsNew, 0);
-        preConditions = preConsNew;
-        preConditions[preConditions.Length-1] = new WorldState(WorldState.Label.attackingForFood, 0);
+        preConditions = new WorldState[2];
+        preConditions[0] = new WorldState(WorldState.Label.attackingForFood, 0);
+        preConditions[1] = new WorldState(WorldState.Label.isHungry,0);
 
         WorldState[] afterNew = new WorldState[afterEffects.Length+1];
         afterEffects.CopyTo(afterNew, 0);

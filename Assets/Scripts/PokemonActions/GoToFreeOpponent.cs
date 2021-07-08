@@ -11,7 +11,7 @@ public abstract class GoToFreeOpponent : GAction
     protected Pokemon.PokemonType strengthType;
     protected Pokemon.PokemonType targetType;
 
-    public new int cost
+    public override float cost
     {
         get
         {
@@ -33,7 +33,9 @@ public abstract class GoToFreeOpponent : GAction
             NavMeshPath path = new NavMeshPath();
 
             agent.CalculatePath(p.transform.position, path);
-            return coef*(int)(PathLength(path));
+
+            Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
+            return coef;//*(int)(PathLength(path));
         }
     }
 

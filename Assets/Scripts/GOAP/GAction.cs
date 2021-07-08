@@ -9,7 +9,13 @@ public abstract class GAction : GBase {
     public string actionName = "Action";
 
     // Cost of the action
-    public float cost = 1.0f;
+    private float _cost = 1.0f;
+
+    public virtual float cost {
+        get { return _cost;}
+        set { _cost = value;}
+    }
+
     // Target where the action is going to take place
     public GameObject target;
     // Store the tag
@@ -43,7 +49,7 @@ public abstract class GAction : GBase {
         effects = new Dictionary<string, int>();
     }
 
-    private void Awake() {
+    protected void Awake() {
 
         // Get hold of the agents NavMeshAgent
         agent = GetComponent<NavMeshAgent>();

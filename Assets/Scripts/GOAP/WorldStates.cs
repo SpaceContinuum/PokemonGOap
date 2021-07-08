@@ -38,6 +38,8 @@ public class WorldState {
         safeFromAttack,
         isStunned,
         isRecovered,
+        availablePokemon,
+        eatingPokemon,
         none
         
 
