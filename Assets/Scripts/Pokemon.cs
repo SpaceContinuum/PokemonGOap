@@ -1,5 +1,14 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Defend))]
+[RequireComponent(typeof(GoToAvailableFood))]
+[RequireComponent(typeof(ConsumeFood))]
+[RequireComponent(typeof(GoToOccupiedFood))]
+[RequireComponent(typeof(FightForFood))]
+[RequireComponent(typeof(Recover))]
+[RequireComponent(typeof(Animator))]
+
+
 public class Pokemon : GAgent
 {
 

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+[RequireComponent(typeof(Fight))]
 public class PokemonTrained : Pokemon
 {
 
