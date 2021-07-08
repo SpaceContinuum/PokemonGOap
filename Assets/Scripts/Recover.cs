@@ -16,7 +16,7 @@ public class Recover : GAction
     {
         target= gameObject;
         Debug.Log(name + " is starting recovery.");
-        
+        target = gameObject;
         return true;
     }
 

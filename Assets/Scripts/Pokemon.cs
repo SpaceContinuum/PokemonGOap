@@ -6,11 +6,12 @@ public class Pokemon : GAgent
     public enum PokemonType{ NULL, Fire, Water, Grass};
     protected ConfigData gameConfig;
     
-    //public GameController gameController;
     [SerializeField] private Pokemon.PokemonType myType = PokemonType.Grass;
     private Pokemon.PokemonType weaknessType;
     private Pokemon.PokemonType strengthType;
-    public Animator anim;
+
+    private Pokemon opponent=null;
+
 
     new void Start()
     {
@@ -24,7 +25,7 @@ public class Pokemon : GAgent
         goals.Add(s1, 3);
 
         // Set up the subgoal "isFighting"
-        SubGoal s2 = new SubGoal("isPeaceful", 1, false);
+        SubGoal s2 = new SubGoal(WorldState.Label.isPeaceful, 1, false);
         // Add it to the goals
         goals.Add(s2, 5);
 
@@ -35,6 +36,7 @@ public class Pokemon : GAgent
         SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
         goals.Add(s3,10);
         
+
      
         anim = GetComponent<Animator>();
     }
@@ -86,6 +88,25 @@ public class Pokemon : GAgent
         return strengthType;
     }
 
+    public Pokemon GetOpponent()
+    {
+        return opponent;
+    }
+
+    public bool IsWinning(Pokemon other)
+    {
+        PokemonType otherType = other.GetPokemonType();
+        if (otherType == strengthType)
+        {
+            return true;
+        }
+        if (otherType == weaknessType)
+        {
+            return false;
+        }
+        return Random.value >= 0.5f;
+    }
+
     public void GetHungry() {
         beliefs.ModifyState("isHungry", 0);
         //call the get hungry method over and over at random times to make the Pokemon
@@ -110,6 +131,13 @@ public class Pokemon : GAgent
             //transform.Rotate(new Vector3(0,0,-90));
         }
     }
+
+    public void SetOpponent(Pokemon p)
+    {
+        opponent = p;
+    }
+
+
 
 
 }
