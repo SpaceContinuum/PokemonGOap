@@ -31,6 +31,7 @@ public class Fight : GAction
         attackTarget = inventory.FindItemWithTag("Pokemon");
         if (attackTarget == null)
         {
+            Debug.Log(gameObject.name + " is trying to fight without a target");
             return false;
         }
         inventory.RemoveItem(attackTarget);
