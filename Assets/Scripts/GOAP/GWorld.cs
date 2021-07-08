@@ -195,6 +195,8 @@ public sealed class GWorld {
         {
             foreach (GameObject o in ObjList)
             {
+                if (o == obj)
+                    continue;
                 float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
                 if (dist < minDistance)
                 {
@@ -207,12 +209,13 @@ public sealed class GWorld {
         {
             foreach (GameObject o in ObjList)
             {
-
+                if (o == obj)
+                    continue;
                 if (o.GetComponent<Pokemon>().GetPokemonType() == ptype)
                 {
                     float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
                     if (dist < minDistance)
-                    {
+                    {                
                         closestObj = o;
                         minDistance = dist;
                     }
@@ -226,6 +229,7 @@ public sealed class GWorld {
     public Pokemon GetClosestFreePokemon(GameObject obj, Pokemon.PokemonType ptype)
     {
         GameObject closestObj = GetClosestObject(obj, freePokemon, ptype);
+        
         if (closestObj != null)
         {
             return closestObj.GetComponent<Pokemon>();

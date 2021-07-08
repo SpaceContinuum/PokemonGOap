@@ -4,38 +4,24 @@ using UnityEngine;
 
 //TODO: current implemnentation means defending pokemon will always lose.
 
-public class DefendFood : GAction
+public class Defend : GAction
 {
     Pokemon p;
     GameObject attacker;
     public override bool PostPerform()
     {
-        //GameObject f = inventory.FindItemWithTag("Food");
-
-        beliefs.RemoveState(WorldState.Label.isDefensive);
-        inventory.RemoveItem(attacker);
-        if (p.IsWinning(target.GetComponent<Pokemon>()))
+        if (p.IsWinning(attacker.GetComponent<Pokemon>()))
         {
-            // stun opponent
-            //gameObject.GetComponent<GAgent>().inventory.AddItem(f);
-            Debug.Log(p + " won the fight");
-            Debug.Log(target.GetComponent<Pokemon>() + " is stunned");
             GWorld.Instance.PokemonFighting2Free(gameObject);
-            target.GetComponent<Pokemon>().SetStun(true);
-            GWorld.Instance.PokemonFighting2Stunned(target);
         }
         else
         {
-            //gameObject.GetComponent<GAgent>().inventory.RemoveItem(f);
-            Debug.Log(target.GetComponent<Pokemon>() + " won the fight");
-            Debug.Log(p + " is stunned");
-
             gameObject.GetComponent<Pokemon>().SetStun(true);
             GWorld.Instance.PokemonFighting2Stunned(gameObject);
-
-            GWorld.Instance.PokemonFighting2Free(target);
         }
-        target = null;
+
+        beliefs.RemoveState(WorldState.Label.isDefensive);
+
         return true;
     }
 
@@ -43,14 +29,6 @@ public class DefendFood : GAction
     {
         p = gameObject.GetComponent<Pokemon>();
         attacker = inventory.FindItemWithTag("Pokemon");
-        /*GameObject f = inventory.FindItemWithTag("Food");
-        if (f == null)
-        {
-            //where's the food we were supposed to have?
-            Debug.Log(name + " can't find food in inventory");
-            beliefs.RemoveState(WorldState.Label.isDefensive);
-            return false;
-        }*/
         if (attacker == null || p.GetOpponent() == null)
         {
             //where's our attacker? that's odd.
@@ -59,19 +37,19 @@ public class DefendFood : GAction
             GWorld.Instance.PokemonFighting2Free(gameObject);
             return false;
         }
-        target = attacker;
+
+        inventory.RemoveItem(attacker);
         return true;
-        
+
     }
 
     public override void Reset()
     {
-        actionName = "DefendFood";
+        actionName = "Defend";
         duration = 3;
         cost = 0; //this should always be a priority since there's no alternative.
-        preConditions = new WorldState[1];
+        preConditions = new WorldState[2];
         preConditions[0] = new WorldState(WorldState.Label.isDefensive, 0);
-        //preConditions[1] = new WorldState(WorldState.Label.hasFood, 0);
         afterEffects = new WorldState[1];
         afterEffects[0] = new WorldState(WorldState.Label.isPeaceful, 0);
 
