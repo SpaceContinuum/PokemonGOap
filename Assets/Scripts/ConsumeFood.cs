@@ -11,6 +11,7 @@ public class ConsumeFood : GAction
         GWorld.Instance.ConsumeFood(target); 
         beliefs.RemoveState("isHungry");
         beliefs.RemoveState("isEating");
+        GetComponent<Pokemon>().anim.SetBool("isEating", false);
         return true;
 
     }
@@ -25,6 +26,7 @@ public class ConsumeFood : GAction
         inventory.RemoveItem(target);
         Debug.Log(name + " is eating");
         beliefs.ModifyState("isEating",1);
+        GetComponent<Pokemon>().anim.SetBool("isEating", true);
         return true;
     }
 

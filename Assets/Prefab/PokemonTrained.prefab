@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 3419963867915672824}
   - component: {fileID: -1061212589438084475}
   - component: {fileID: -3032813334267872898}
+
   m_Layer: 0
   m_Name: PokemonTrained
   m_TagString: Pokemon
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bc18f2753531414408c8b0e4a3e63106, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac7f2ec63a426554ba87f4dcab8ca7f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce8d09e5c4f8684db3c65508231a11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisAgent: {fileID: 0}
+  thisAgent: {fileID: 8083073701479098716}
 --- !u!114 &8083073701479098716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   actions: []
   currentAction: {fileID: 0}
   myType: 3
+  anim: {fileID: 0}
 --- !u!114 &2897658964200801426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,3 +504,22 @@ MonoBehaviour:
     value: 0
   agent: {fileID: 0}
   running: 0
+--- !u!95 &5367856836049347313
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdc66b163f3625f4ebf18f2bbf80cabc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

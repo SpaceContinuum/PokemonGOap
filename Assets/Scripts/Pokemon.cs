@@ -12,6 +12,7 @@ public class Pokemon : GAgent
 
     private Pokemon opponent=null;
 
+
     new void Start()
     {
 
@@ -32,12 +33,21 @@ public class Pokemon : GAgent
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);
         
-        SubGoal s3 = new SubGoal(WorldState.Label.recovered, 10, false);
+        SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
         goals.Add(s3,10);
         
-       
-        
 
+     
+        anim = GetComponent<Animator>();
+    }
+
+    public void Update() {
+        bool animState =  false;
+        if (currentAction != null) {
+            Vector3 v = currentAction.agent.velocity;
+            animState = (v.magnitude > 0);
+        }
+        anim.SetBool("isWalking", animState);
     }
 
     private void CalculateTypes()
@@ -62,6 +72,7 @@ public class Pokemon : GAgent
         }
     }
 
+    
     public PokemonType GetPokemonType()
     {
         return myType;
@@ -108,14 +119,16 @@ public class Pokemon : GAgent
 
 
     public void SetStun(bool state) {
-        if (state && !beliefs.HasState(WorldState.Label.stunned))
+        if (state && !beliefs.HasState(WorldState.Label.isStunned))
         {
-            beliefs.ModifyState(WorldState.Label.stunned, 0);
-            transform.Rotate(new Vector3(0,0,90));
+            beliefs.ModifyState(WorldState.Label.isStunned, 0);
+            anim.SetBool("isStunned", true);
+            //transform.Rotate(new Vector3(0,0,90));
         }
         else {
-            beliefs.RemoveState(WorldState.Label.stunned);
-            transform.Rotate(new Vector3(0,0,-90));
+            beliefs.RemoveState(WorldState.Label.isStunned);
+            anim.SetBool("isStunned", false);
+            //transform.Rotate(new Vector3(0,0,-90));
         }
     }
 

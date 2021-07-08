@@ -55,12 +55,19 @@
      <Compile Include="Assets\Scripts\GPlanner.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GoToAvailableFood.cs" />
+     <Compile Include="Assets\Scripts\GoToEatingOpponent.cs" />
+     <Compile Include="Assets\Scripts\GoToEatingSameTypeOpponent.cs" />
+     <Compile Include="Assets\Scripts\GoToEatingWeakTypeOpponent.cs" />
+     <Compile Include="Assets\Scripts\GoToFreeOpponent.cs" />
+     <Compile Include="Assets\Scripts\GoToFreeSameTypeOpponent.cs" />
+     <Compile Include="Assets\Scripts\GoToFreeWeakTypeOpponent.cs" />
      <Compile Include="Assets\Scripts\GoToOccupiedFood.cs" />
      <Compile Include="Assets\Scripts\Mouse.cs" />
      <Compile Include="Assets\Scripts\Pokemon.cs" />
      <Compile Include="Assets\Scripts\PokemonMovement.cs" />
      <Compile Include="Assets\Scripts\PokemonTrained.cs" />
      <Compile Include="Assets\Scripts\Recover.cs" />
+     <Compile Include="Assets\StateSelector.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Microsoft VS Code/bin/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
