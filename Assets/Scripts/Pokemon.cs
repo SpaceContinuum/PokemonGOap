@@ -12,6 +12,7 @@ public class Pokemon : GAgent
 
     private Pokemon opponent=null;
 
+    public Animator anim;
 
     new void Start()
     {

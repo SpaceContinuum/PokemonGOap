@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 3419963867915672824}
   - component: {fileID: -1061212589438084475}
   - component: {fileID: -3032813334267872898}
-
+  - component: {fileID: 5367856836049347313}
   m_Layer: 0
   m_Name: PokemonTrained
   m_TagString: Pokemon
@@ -517,7 +517,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: cdc66b163f3625f4ebf18f2bbf80cabc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
