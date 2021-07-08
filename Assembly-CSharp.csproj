@@ -44,7 +44,6 @@
      <Compile Include="Assets\Scripts\Food.cs" />
      <Compile Include="Assets\Scripts\FoodManager.cs" />
      <Compile Include="Assets\Scripts\GBase.cs" />
-     <Compile Include="Assets\Scripts\GOAP\ConsumeFood.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAction.cs" />
      <Compile Include="Assets\Scripts\GOAP\GAgent.cs" />
      <Compile Include="Assets\Scripts\GOAP\GInventory.cs" />
@@ -54,6 +53,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Mouse.cs" />
      <Compile Include="Assets\Scripts\Pokemon.cs" />
+     <Compile Include="Assets\Scripts\PokemonActions\ConsumeFood.cs" />
      <Compile Include="Assets\Scripts\PokemonActions\Defend.cs" />
      <Compile Include="Assets\Scripts\PokemonActions\DefendFood.cs" />
      <Compile Include="Assets\Scripts\PokemonActions\Fight.cs" />

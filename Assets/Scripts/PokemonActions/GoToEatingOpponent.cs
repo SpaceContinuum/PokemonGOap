@@ -92,6 +92,7 @@ public abstract class GoToEatingOpponent : GAction
 
     public override void Reset()
     {
+        actionName = "GoToEatingOpponent";
         Debug.Log("Reset in GoToEatingOpponent");
     }
 

@@ -22,7 +22,7 @@ public class GoToAvailableFood : GAction
             return false; //could not secure the food
         }
     }
-/*
+
     public new int cost { 
         get {
             Food f = GWorld.Instance.GetClosestFreeFood(gameObject);
@@ -31,7 +31,7 @@ public class GoToAvailableFood : GAction
             agent.CalculatePath(f.transform.position, path);
             return (int)(PathLength(path));
         }
-    }*/
+    }
     public override bool PrePerform()
     {
         target = GWorld.Instance.GetClosestFreeFood(gameObject).gameObject;
@@ -46,7 +46,7 @@ public class GoToAvailableFood : GAction
 
     public override void Reset()
     {
-        cost = 1;
+        //cost = 1;
         duration = 10;
         actionName = "FindAvailableFood";
         

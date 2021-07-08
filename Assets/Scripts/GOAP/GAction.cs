@@ -111,13 +111,20 @@ public abstract class GAction : GBase {
     public abstract void Reset();
 
     protected float PathLength(NavMeshPath path) {
-        float d = 0f;
-        Vector2 curr = gameObject.transform.position;
-        foreach (Vector2 c in path.corners) {
-            d+=(c-curr).magnitude; //ideally, figure out a way to do this with sqrMagnitude for performance reasons, but this is fine for now.
-            curr = c;
+        if (path.corners.Length < 2)
+            return 0;
+        
+        Vector3 previousCorner = path.corners[0];
+        float lengthSoFar = 0.0F;
+        int i = 1;
+        while (i < path.corners.Length) {
+            Vector3 currentCorner = path.corners[i];
+            lengthSoFar += Vector3.Distance(previousCorner, currentCorner);
+            previousCorner = currentCorner;
+            i++;
         }
-        return d;
+        return lengthSoFar;
+
     }
        
 }
