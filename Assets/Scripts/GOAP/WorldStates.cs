@@ -42,8 +42,8 @@ public class WorldState {
         eatingPokemon,
         fightingPokemon,
         stunnedPokemon,
-        none
-        
+        none,
+        isEating
     }
     
 }

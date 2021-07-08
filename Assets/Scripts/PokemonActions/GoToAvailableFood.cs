@@ -44,7 +44,7 @@ public class GoToAvailableFood : GAction
                 Debug.Log(gameObject.name + " couldn't find food");    
                 return false;
         }
-        Debug.Log(gameObject.name + " is going towards " + target.name);
+        //Debug.Log(gameObject.name + " is going towards " + target.name);
         
         return true;
     }

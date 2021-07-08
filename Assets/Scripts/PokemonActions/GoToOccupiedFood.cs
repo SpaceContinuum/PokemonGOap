@@ -64,11 +64,11 @@ public class GoToOccupiedFood : GAction
         duration = 10;
         cost = 5;
         actionName = "GoToOccupiedFood";
-        preConditions = new WorldState[2];
-        preConditions[0] = new WorldState("foodEaten", 0);
-        preConditions[1] = new WorldState("isHungry", 0);
+        preConditions = new WorldState[1];
+        preConditions[0] = new WorldState(WorldState.Label.foodEaten, 0);
+        //preConditions[1] = new WorldState("isHungry", 0);
         afterEffects = new WorldState[1];
-        afterEffects[0] = new WorldState("attacking", 0);
+        afterEffects[0] = new WorldState(WorldState.Label.attackingForFood, 0);
     }
 
    

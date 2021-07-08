@@ -67,15 +67,17 @@ public class GAgent : GBase {
 
         currentAction.running = false;
         //TODO: fix null derefernce
+        Debug.Log(gameObject.name+" postperform "+currentAction.actionName);
         currentAction.PostPerform();
         invoked = false;
     }
 
-    public void Interrupt() {
+    public virtual void Interrupt() {
         CancelInvoke("CompleteAction");
         currentAction = null;
         planner = null;
         actionQueue = null;
+        invoked = false;
 
     }
 
@@ -111,7 +113,7 @@ public class GAgent : GBase {
 
                         //if the action movement is complete wait
                         //a certain duration for it to be completed
-                        Debug.Log(name + " running CompleteAction on "+currentAction); 
+                        //Debug.Log(name + " running CompleteAction on "+currentAction); 
                         Invoke("CompleteAction", currentAction.duration);
                         
                         invoked = true;
@@ -163,6 +165,7 @@ public class GAgent : GBase {
             // Remove the top action of the queue and put it in currentAction
             currentAction = actionQueue.Dequeue();
 
+            Debug.Log(gameObject.name+" preperform "+currentAction.actionName);
             if (currentAction.PrePerform()) {
 
                 // Get our current object

@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: 2513596857492124592, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
     - target: {fileID: 7117629570145855484, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: myType
@@ -142,6 +147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Charlie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919213213295577474, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
@@ -1007,6 +1017,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: -3032813334267872898, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: preConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3032813334267872898, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
+    - target: {fileID: -3032813334267872898, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: preConditions.Array.data[1].key
+      value: isHungry
+      objectReference: {fileID: 0}
+    - target: {fileID: -1061212589438084475, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: duration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7619244506498229509, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
       propertyPath: m_Speed
@@ -1030,12 +1060,12 @@ PrefabInstance:
     - target: {fileID: 7919213213295577487, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.71
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
@@ -2600,6 +2630,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: 2513596857492124592, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
     - target: {fileID: 7117629570145855484, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: myType
@@ -2615,6 +2650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bob
       objectReference: {fileID: 0}
+    - target: {fileID: 7919213213295577474, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2623,12 +2663,12 @@ PrefabInstance:
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.994814
+      value: 8.69
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94235396
+      value: 2.07
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
@@ -3400,6 +3440,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: 2513596857492124592, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
     - target: {fileID: 7117629570145855484, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: myType
@@ -3418,7 +3463,7 @@ PrefabInstance:
     - target: {fileID: 7919213213295577474, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
@@ -3713,6 +3758,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: -3032813334267872898, guid: 9dfae962544a9c64ba4f6c36277c49b3,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
     - target: {fileID: 7619244506498229509, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
       propertyPath: m_Speed
@@ -3726,7 +3776,7 @@ PrefabInstance:
     - target: {fileID: 7919213213295577474, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 9dfae962544a9c64ba4f6c36277c49b3,
         type: 3}
@@ -4873,12 +4923,12 @@ PrefabInstance:
     - target: {fileID: 2911808764522118700, guid: e1a4ad3553d3b0f4babfb06b4e200d5f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7
+      value: -1.6319995
       objectReference: {fileID: 0}
     - target: {fileID: 2911808764522118700, guid: e1a4ad3553d3b0f4babfb06b4e200d5f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -2.8170002
       objectReference: {fileID: 0}
     - target: {fileID: 2911808764522118700, guid: e1a4ad3553d3b0f4babfb06b4e200d5f,
         type: 3}
@@ -5008,6 +5058,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763503066}
     m_Modifications:
+    - target: {fileID: 2513596857492124592, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: afterEffects.Array.data[0].key
+      value: attackingForFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169646707522145321, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: duration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7619244506498229509, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_Speed
@@ -5018,6 +5078,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alice
       objectReference: {fileID: 0}
+    - target: {fileID: 7919213213295577474, guid: 81c27162b83b4804eb985de7dc3102f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_RootOrder
@@ -5026,12 +5091,12 @@ PrefabInstance:
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.65
+      value: 0.42000008
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.27
+      value: -2.882
       objectReference: {fileID: 0}
     - target: {fileID: 7919213213295577487, guid: 81c27162b83b4804eb985de7dc3102f0,
         type: 3}

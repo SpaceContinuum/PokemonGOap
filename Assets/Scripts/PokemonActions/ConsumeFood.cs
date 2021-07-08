@@ -9,9 +9,11 @@ public class ConsumeFood : GAction
         Debug.Log(name + " finished eating, will now destroy food object");
         //release and destroy the food.
         GWorld.Instance.ConsumeFood(target); 
-        beliefs.RemoveState("isHungry");
-        beliefs.RemoveState("isEating");
+        beliefs.RemoveState(WorldState.Label.isHungry);
+        //beliefs.RemoveState(WorldState.Label.isEating);
         GetComponent<Pokemon>().anim.SetBool("isEating", false);
+        inventory.RemoveItem(target);
+
         return true;
 
     }
@@ -23,9 +25,8 @@ public class ConsumeFood : GAction
             Debug.Log("Food not found in inventory when trying to eat");
             return false;
         }
-        inventory.RemoveItem(target);
         Debug.Log(name + " is eating");
-        beliefs.ModifyState("isEating",1);
+        //beliefs.ModifyState(WorldState.Label.isEating,1);
         GetComponent<Pokemon>().anim.SetBool("isEating", true);
         return true;
     }

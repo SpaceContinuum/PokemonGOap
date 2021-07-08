@@ -166,13 +166,13 @@ MonoBehaviour:
   actionName: FindAvailableFood
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 10
   preConditions:
-  - key: IsHungry
-    value: 1
-  - key: AvailableFood
-    value: 1
-  afterEffects: []
+  - key: availableFood
+    value: 0
+  afterEffects:
+  - key: hasFood
+    value: 0
   agent: {fileID: 0}
   running: 0
 --- !u!195 &7619244506498229509

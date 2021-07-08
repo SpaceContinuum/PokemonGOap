@@ -26,12 +26,12 @@ public class Pokemon : GAgent
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"
-        SubGoal s1 = new SubGoal(WorldState.Label.isFull, 5, false);
+        SubGoal s1 = new SubGoal(WorldState.Label.isFull, 3, false);
         // Add it to the goals
         goals.Add(s1, 3);
 
         // Set up the subgoal "isFighting"
-        SubGoal s2 = new SubGoal(WorldState.Label.isPeaceful, 1, false);
+        SubGoal s2 = new SubGoal(WorldState.Label.isPeaceful, 5, false);
         // Add it to the goals
         goals.Add(s2, 5);
 
@@ -42,7 +42,7 @@ public class Pokemon : GAgent
         SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
         goals.Add(s3,10);
         
-
+        
      
         anim = GetComponent<Animator>();
     }
@@ -51,9 +51,10 @@ public class Pokemon : GAgent
         bool animState =  false;
         if (currentAction != null) {
             Vector3 v = currentAction.agent.velocity;
+            anim.SetFloat("movementSpeed", v.magnitude);
             animState = (v.magnitude > 0);
         }
-        anim.SetBool("isWalking", animState);
+        
     }
 
     private void CalculateTypes()
@@ -152,7 +153,22 @@ public class Pokemon : GAgent
         opponent = p;
     }
 
+    public override void Interrupt() {
+        Debug.Log(gameObject.name + " interrupted; current action: "+ currentAction );
+        base.Interrupt();
+        
+        string[] anims = {"isStunned", "isEating", "isWalking"};
+        foreach (string s in anims) {
+            anim.SetBool(s, false); //interrupt animations
+        }
+        //move the pokemon back to Free group from wherever it is.
+        GWorld.Instance.PokemonEating2Free(gameObject);
+        GWorld.Instance.PokemonStunned2Free(gameObject);
+        GWorld.Instance.PokemonFighting2Free(gameObject);
+        //clear problem states
+        
 
+    }
 
 
 }
