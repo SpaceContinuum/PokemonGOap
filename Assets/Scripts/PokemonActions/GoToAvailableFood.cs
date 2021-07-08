@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,8 +29,12 @@ public class GoToAvailableFood : GAction
             Food f = GWorld.Instance.GetClosestFreeFood(gameObject);
             NavMeshPath path = new NavMeshPath();
 
+            
+            if (f == null)
+                return Mathf.Infinity;
+
             agent.CalculatePath(f.transform.position, path);
-            return (int)(PathLength(path));
+            return (PathLength(path));
         }
     }
     public override bool PrePerform()

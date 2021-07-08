@@ -6,42 +6,62 @@ public class Fight : GAction
 {
     GameObject attackTarget;
     Pokemon p;
-    public override bool PostPerform()
-    {
-        bool outcome = false;
+    bool didWin;
+    public new void Start() {
         p = GetComponent<Pokemon>();
-        if (p.IsWinning(attackTarget.GetComponent<Pokemon>()))
-        {
-            // stun opponent
-            //loot them
-            p.Loot(attackTarget.GetComponent<Pokemon>());
+    }
+    public override bool PostPerform()
+    {        
+        if (didWin) {
             GWorld.Instance.PokemonFighting2Free(gameObject);
-            beliefs.ModifyState(WorldState.Label.isPeaceful, 1);
             beliefs.RemoveState(WorldState.Label.isViolent);
-            outcome = true;
         }
-        else
-        {
-            gameObject.GetComponent<Pokemon>().SetStun(true);
-            //they loot us
-            attackTarget.GetComponent<Pokemon>().Loot(p);
+        else {
             GWorld.Instance.PokemonFighting2Stunned(gameObject);
+            gameObject.GetComponent<Pokemon>().beliefs.ModifyState(WorldState.Label.isStunned, 1);
 
         }
 
+        p.anim.SetBool("isFighting", false);
         beliefs.RemoveState(WorldState.Label.attacking);
-        return outcome;
+        return true;
     }
 
     public override bool PrePerform()
     {
-        attackTarget = inventory.FindItemWithTag("Pokemon");
-        if (attackTarget == null)
+
+        //combat resolution happens at start of the action, to ensure that everything is synced up.
+        //If it happened in PostPerform, there's be a race condition between the Defender and the Attacker to do cleanup.
+        // This way, the Attacker triggers all the cleanup actions.
+        
+        target = inventory.FindItemWithTag("Pokemon");
+        if (target == null)
         {
             Debug.Log(gameObject.name + " is trying to fight without a target");
             return false;
         }
-        inventory.RemoveItem(attackTarget);
+        p.anim.SetBool("isFighting", true);
+        inventory.RemoveItem(target);
+
+        didWin = p.IsWinning(target.GetComponent<Pokemon>());
+        
+        if (didWin)
+        {
+            // stun opponent
+            target.GetComponent<Pokemon>().beliefs.ModifyState(WorldState.Label.isStunned, 1);
+            //loot them
+            p.Loot(target.GetComponent<Pokemon>());
+            //beliefs.ModifyState(WorldState.Label.isPeaceful, 1);
+        }
+        else
+        {
+            //they loot us
+            target.GetComponent<Pokemon>().Loot(p);
+
+        }
+
+
+
         return true;
     }
 

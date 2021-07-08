@@ -92,42 +92,72 @@ public sealed class GWorld {
 
     public void PokemonFree2Eating(GameObject p)
     {
-        MoveObjectFromTo(p, freePokemon, eatingPokemon);
+        if(MoveObjectFromTo(p, freePokemon, eatingPokemon))
+        {
+            world.ModifyState(WorldState.Label.availablePokemon, -1);
+            world.ModifyState(WorldState.Label.eatingPokemon, 1);
+        }
+            
+        
     }
 
     public void PokemonFree2Fighting(GameObject p)
     {
-        MoveObjectFromTo(p, freePokemon, fightingPokemon);
+        if (MoveObjectFromTo(p, freePokemon, fightingPokemon)) {
+            world.ModifyState(WorldState.Label.availablePokemon, -1);
+            world.ModifyState(WorldState.Label.fightingPokemon, 1);
+        }
+            
     }
 
     public void PokemonFighting2Stunned(GameObject p)
     {
-        MoveObjectFromTo(p, fightingPokemon, stunnedPokemon);
+        if(MoveObjectFromTo(p, fightingPokemon, stunnedPokemon)) {
+            world.ModifyState(WorldState.Label.fightingPokemon, -1);
+            world.ModifyState(WorldState.Label.stunnedPokemon, 1);
+        };
     }
 
     public void PokemonFighting2Eating(GameObject p)
     {
-        MoveObjectFromTo(p, fightingPokemon, eatingPokemon);
+        if(MoveObjectFromTo(p, fightingPokemon, eatingPokemon)) {
+        
+            world.ModifyState(WorldState.Label.fightingPokemon, -1);
+            world.ModifyState(WorldState.Label.eatingPokemon,1);
+        }
     }
 
     public void PokemonFighting2Free(GameObject p)
     {
-        MoveObjectFromTo(p, fightingPokemon, freePokemon);
+        
+        if(MoveObjectFromTo(p, fightingPokemon, freePokemon)) {
+            world.ModifyState(WorldState.Label.fightingPokemon, -1);
+            world.ModifyState(WorldState.Label.availablePokemon, 1);
+        }
     }
 
     public void PokemonEating2Fighting(GameObject p)
     {
-        MoveObjectFromTo(p, eatingPokemon, fightingPokemon);
+        if(MoveObjectFromTo(p, eatingPokemon, fightingPokemon)) {
+            world.ModifyState(WorldState.Label.eatingPokemon, -1);
+            world.ModifyState(WorldState.Label.fightingPokemon, 1);
+        }
     }
 
     public void PokemonEating2Free(GameObject p)
     {
-        MoveObjectFromTo(p, eatingPokemon, freePokemon);
+        if(MoveObjectFromTo(p, eatingPokemon, freePokemon)) {
+            world.ModifyState(WorldState.Label.eatingPokemon, -1);
+            world.ModifyState(WorldState.Label.availablePokemon,1);
+        }
     }
 
     public void PokemonStunned2Free(GameObject p)
     {
-        MoveObjectFromTo(p, stunnedPokemon, freePokemon);
+        if(MoveObjectFromTo(p, stunnedPokemon, freePokemon)) {
+            world.ModifyState(WorldState.Label.stunnedPokemon, -1);
+            world.ModifyState(WorldState.Label.availablePokemon,1);
+        }
     }
 
     // Remove Food

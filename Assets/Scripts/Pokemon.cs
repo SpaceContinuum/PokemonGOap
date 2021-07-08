@@ -14,10 +14,15 @@ public class Pokemon : GAgent
 
     public Animator anim;
 
+    public void Awake() {
+        CalculateTypes();
+
+    }
+
     new void Start()
     {
 
-        CalculateTypes();
+        
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"

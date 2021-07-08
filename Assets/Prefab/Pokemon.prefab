@@ -160,7 +160,6 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: FindAvailableFood
-  cost: 1
   target: {fileID: 0}
   targetTag: 
   duration: 10
@@ -209,7 +208,6 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: ConsumeFood
-  cost: 1
   target: {fileID: 0}
   targetTag: 
   duration: 50
@@ -254,7 +252,6 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: GoToOccupiedFood
-  cost: 5
   target: {fileID: 0}
   targetTag: 
   duration: 10
@@ -281,7 +278,6 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: FightForFood
-  cost: 1
   target: {fileID: 0}
   targetTag: 
   duration: 5
@@ -312,7 +308,6 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: Defend
-  cost: 0
   target: {fileID: 0}
   targetTag: 
   duration: 3
@@ -339,15 +334,14 @@ MonoBehaviour:
   config: {fileID: 0}
   gameController: {fileID: 0}
   actionName: Recover
-  cost: 0
   target: {fileID: 0}
   targetTag: 
   duration: 20
   preConditions:
-  - key: stunned
+  - key: isStunned
     value: 0
   afterEffects:
-  - key: recovered
+  - key: isRecovered
     value: 0
   agent: {fileID: 0}
   running: 0

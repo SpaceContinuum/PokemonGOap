@@ -8,7 +8,7 @@ public class GBase : MonoBehaviour
     public ConfigData config;
     public GameController gameController;
 
-    protected void Start() {
+    protected void Awake() {
         gameController = FindObjectOfType<GameController>();
         config = gameController.config;
     }

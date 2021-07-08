@@ -15,14 +15,14 @@ public abstract class GoToEatingOpponent : GAction
     {
         get
         {
-            int coef;
+            float coef;
             if (targetType == myType)
             {
-                coef = 3;
+                coef = 2;
             }
             else if (targetType == strengthType)
             {
-                coef = 2;
+                coef = 0.8f;
             }
             else
             {
@@ -32,10 +32,13 @@ public abstract class GoToEatingOpponent : GAction
             Pokemon p = GWorld.Instance.GetClosestEatingPokemon(gameObject, targetType);
             NavMeshPath path = new NavMeshPath();
 
-            agent.CalculatePath(p.transform.position, path);
-            Debug.Log(gameObject.name + " cost to attacking eater " + p.name + ": "+coef );
+            if (p != null && path != null) {
+                agent.CalculatePath(p.transform.position, path);
 
-            return coef * (int)(PathLength(path));
+                //Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
+                return coef*(PathLength(path));
+            }
+            return Mathf.Infinity;
         }
     }
 

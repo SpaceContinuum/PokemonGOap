@@ -53,7 +53,6 @@ public class GAgent : GBase {
 
     // Start is called before the first frame update
     public new void Start() {
-        base.Start();
         GAction[] acts = this.GetComponents<GAction>();
         foreach (GAction a in acts) {
 
@@ -104,14 +103,17 @@ public class GAgent : GBase {
             else {
                 float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
                 // Check the agent has a goal and has reached that goal
-                if (currentAction.agent.hasPath && distanceToTarget < 2.0f) { // currentAction.agent.remainingDistance < 1.0f) 
+                //if (currentAction.agent.hasPath && distanceToTarget < 0.5f) { // currentAction.agent.remainingDistance < 1.0f) 
+                //if (currentAction.agent.remainingDistance < 1.0f) {
+                if (distanceToTarget < 1.0f) { 
 
                     if (!invoked) {
 
                         //if the action movement is complete wait
                         //a certain duration for it to be completed
-                        //Debug.Log(name + " running CompleteAction on "+currentAction);
+                        Debug.Log(name + " running CompleteAction on "+currentAction); 
                         Invoke("CompleteAction", currentAction.duration);
+                        
                         invoked = true;
                     }
                 }

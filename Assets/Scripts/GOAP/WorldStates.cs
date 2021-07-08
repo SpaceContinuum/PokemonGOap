@@ -40,9 +40,10 @@ public class WorldState {
         isRecovered,
         availablePokemon,
         eatingPokemon,
+        fightingPokemon,
+        stunnedPokemon,
         none
         
-
     }
     
 }
@@ -87,7 +88,7 @@ public class WorldStates {
             // Add the value to the state
             states[key] += value;
             // If it's less than zero then remove it
-            if (states[key] < 0) { //TODO: should this be <0 or <=0?
+            if (states[key] <= 0) { //TODO: should this be <0 or <=0?
 
                 // Call the RemoveState method
                 RemoveState(key);

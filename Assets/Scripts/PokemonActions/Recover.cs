@@ -7,8 +7,9 @@ public class Recover : GAction
     public override bool PostPerform()
     {
         Debug.Log(name + " has finished recovering");
-        gameObject.GetComponent<Pokemon>().SetStun(false);
         GetComponent<Pokemon>().anim.SetBool("isStunned", false);
+        beliefs.RemoveState(WorldState.Label.isStunned);
+        GWorld.Instance.PokemonStunned2Free(gameObject);
         return true;
     }
 
@@ -17,6 +18,7 @@ public class Recover : GAction
         target= gameObject;
         Debug.Log(name + " is starting recovery.");
         target = gameObject;
+        GetComponent<Pokemon>().anim.SetBool("isStunned", true);
         return true;
     }
 
