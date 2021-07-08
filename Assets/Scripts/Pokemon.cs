@@ -108,6 +108,15 @@ public class Pokemon : GAgent
         return Random.value >= 0.5f;
     }
 
+    public void Loot(Pokemon other) {
+        GameObject f = other.inventory.FindItemWithTag("Food");
+        if (f != null && f.GetComponent<Food>() != null) { //this means our opponent has food !
+            other.inventory.RemoveItem(f); //take it from them
+            inventory.AddItem(f); //give it to us
+            other.beliefs.ModifyState(WorldState.Label.hasFood, -1);
+            beliefs.ModifyState(WorldState.Label.hasFood, 1);
+        }
+    }
     public void GetHungry() {
         beliefs.ModifyState("isHungry", 0);
         //call the get hungry method over and over at random times to make the Pokemon

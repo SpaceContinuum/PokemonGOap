@@ -12,11 +12,15 @@ public class Fight : GAction
         if (p.IsWinning(attackTarget.GetComponent<Pokemon>()))
         {
             // stun opponent
+            //loot them
+            p.Loot(attackTarget.GetComponent<Pokemon>());
             GWorld.Instance.PokemonFighting2Free(gameObject);
         }
         else
         {
             gameObject.GetComponent<Pokemon>().SetStun(true);
+            //they loot us
+            attackTarget.GetComponent<Pokemon>().Loot(p);
             GWorld.Instance.PokemonFighting2Stunned(gameObject);
         }
 

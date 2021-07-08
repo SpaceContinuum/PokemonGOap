@@ -9,9 +9,6 @@ public class WorldState {
 
     public string key;
     public int value;
-    private Dictionary<string, Label> strToLabel;
-
-    
 
     public WorldState(string k, int v) {
         key = k;
@@ -25,34 +22,12 @@ public class WorldState {
         return v.ToString();
     }
 
-    public WorldState.Label GetStateFromString(string s) {
-        switch(s) {
-            case "isHungry":
-                return Label.isHungry;    
-            case "foodEaten":
-                return Label.foodEaten;
-            case "attacking":
-                return Label.attacking;
-            case "hasFood":
-                return Label.hasFood;
-            case "isFull":
-                return Label.isFull;
-            case "availableFood":
-                return Label.availableFood;
-            case "isViolen":
-                return Label.isViolent;
-            case "underAttack":
-                return Label.underAttack;
-            
-            default:
-                return Label.none;
-        }
-    }
     //WorldState Labels
      public enum Label {
         isHungry,
         foodEaten,
         attacking,
+        attackingForFood,
         hasFood,
         isFull,
         availableFood,
