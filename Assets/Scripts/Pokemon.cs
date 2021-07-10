@@ -129,9 +129,13 @@ public class Pokemon : GAgent
 
     public void SetDefence()
     {
-        SubGoal s = new SubGoal(WorldState.Label.isPeaceful, 5, true);
+        SubGoal s1 = new SubGoal(WorldState.Label.isPeaceful, 5, true);
         // Add it to the goals
-        goals.Add(s, 5);
+        goals.Add(s1, 5);
+
+        SubGoal s2 = new SubGoal(WorldState.Label.isRecovered, 10, true);
+        // Add it to the goals
+        goals.Add(s2, 10);
     }
 
     public void GetHungry() {
