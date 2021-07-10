@@ -131,11 +131,19 @@ public class Pokemon : GAgent
     {
         SubGoal s1 = new SubGoal(WorldState.Label.isPeaceful, 5, true);
         // Add it to the goals
-        goals.Add(s1, 5);
+        AddGoal(s1, 5);
+        /*if (!goals.ContainsKey(s1))
+        {
+            goals.Add(s1, 5);
+        }*/
 
         SubGoal s2 = new SubGoal(WorldState.Label.isRecovered, 10, true);
         // Add it to the goals
-        goals.Add(s2, 10);
+        AddGoal(s2, 10);
+        /*if (!goals.ContainsKey(s2))
+        {
+            goals.Add(s2, 10);
+        }*/
     }
 
     public void GetHungry() {
@@ -143,7 +151,11 @@ public class Pokemon : GAgent
 
         SubGoal s1 = new SubGoal(WorldState.Label.isFull, 3, true);
         // Add it to the goals
-        goals.Add(s1, 3);
+        AddGoal(s1, 3);
+        /*if (!goals.ContainsKey(s1))
+        {
+            goals.Add(s1, 3);
+        }*/
 
         beliefs.ModifyState(WorldState.Label.isHungry, 1);
         //call the get hungry method over and over at random times to make the Pokemon
@@ -159,7 +171,12 @@ public class Pokemon : GAgent
         if (state && !beliefs.HasState(WorldState.Label.isStunned))
         {
             SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, true);
-            goals.Add(s3, 10);
+            // Add it to the goals
+            AddGoal(s3, 10);
+            /*if (!goals.ContainsKey(s3))
+            {
+                goals.Add(s3, 10);
+            }*/
 
             beliefs.ModifyState(WorldState.Label.isStunned, 0);
             anim.SetBool("isStunned", true);

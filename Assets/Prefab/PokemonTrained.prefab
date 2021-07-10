@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: -8331455294042487746}
   - component: {fileID: 3419963867915672824}
   - component: {fileID: -1061212589438084475}
-  - component: {fileID: -3032813334267872898}
   - component: {fileID: 5367856836049347313}
   m_Layer: 0
   m_Name: PokemonTrained
@@ -446,32 +445,6 @@ MonoBehaviour:
     value: 0
   afterEffects:
   - key: isPeaceful
-    value: 0
-  agent: {fileID: 0}
-  running: 0
---- !u!114 &-3032813334267872898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7919213213295577474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4516207a9bd6c640b226ae2cd93cf31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 0}
-  gameController: {fileID: 0}
-  actionName: GoToOccupiedFood
-  target: {fileID: 0}
-  targetTag: 
-  duration: 10
-  preConditions:
-  - key: foodEaten
-    value: 0
-  afterEffects:
-  - key: attacking
     value: 0
   agent: {fileID: 0}
   running: 0

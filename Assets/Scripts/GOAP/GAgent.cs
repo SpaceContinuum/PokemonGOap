@@ -31,6 +31,21 @@ public class GAgent : GBase {
     // Our beliefs
     public WorldStates beliefs = new WorldStates();
 
+    public void AddGoal(SubGoal subgoal, int priority)
+    {
+        foreach (KeyValuePair<SubGoal, int> goal in goals)
+        {
+            foreach (KeyValuePair<string, int> sg in subgoal.sGoals)
+            {
+                if (goal.Key.sGoals.ContainsKey(sg.Key))
+                    return;
+            }
+        }
+        goals.Add(subgoal, priority);
+    }
+
+
+
     // Access the planner
     GPlanner planner;
     // Action Queue
