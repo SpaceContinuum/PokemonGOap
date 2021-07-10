@@ -35,7 +35,24 @@ public class DebugButton : MonoBehaviour
         }
         
         string msg = pokemon.name;
-        pokemon.beliefs.ModifyState(requestedState,0);
+        //pokemon.beliefs.ModifyState(requestedState,0);
+        switch (requestedState)
+        {
+            case WorldState.Label.isHungry:
+                pokemon.GetHungry();
+                break;
+
+            case WorldState.Label.isViolent:
+                pokemon.SetViolence();
+                break;
+            case WorldState.Label.isStunned:
+                pokemon.SetStun(true);
+                break;
+            default:
+                break;
+
+        }
+
         Debug.Log(pokemon.name+": applying state "+requestedState);
     }
 }

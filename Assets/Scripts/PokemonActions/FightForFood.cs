@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class FightForFood : Fight
 {
+
+    
+    public override bool PostPerform()
+    {
+        Debug.Log(name + " PostPerform FightForFood");
+        if (base.PostPerform())
+        {
+            beliefs.RemoveState(WorldState.Label.attackingForFood);
+            return true;
+        }
+        return false;
+    }
     public override bool PrePerform()
     {
+        Debug.Log(name + " PrePerform FightForFood");
         if (base.PrePerform())
         {
             //TODO: place this in belief instead of world state

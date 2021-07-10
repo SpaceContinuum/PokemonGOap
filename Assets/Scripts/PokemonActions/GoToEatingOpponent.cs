@@ -69,8 +69,11 @@ public abstract class GoToEatingOpponent : GAction
         //Declare attack on opponent
         p_target.SetOpponent(p);
         Debug.Log(gameObject.name + " attacking " + p_target.name + " for " + target.name);
-        p_target.beliefs.ModifyState("isDefensive", 1);
+        
+        // TODO: consider removing this interrupt
         p_target.Interrupt();
+        p_target.SetDefence();
+        p_target.beliefs.ModifyState("isDefensive", 1);
         p_target.inventory.AddItem(gameObject);
         GWorld.Instance.PokemonEating2Fighting(target);
 

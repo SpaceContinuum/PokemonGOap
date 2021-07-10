@@ -26,21 +26,21 @@ public class Pokemon : GAgent
         // Call the base start
         base.Start();
         // Set up the subgoal "isFull"
-        SubGoal s1 = new SubGoal(WorldState.Label.isFull, 3, false);
+        //SubGoal s1 = new SubGoal(WorldState.Label.isFull, 3, false);
         // Add it to the goals
-        goals.Add(s1, 3);
+        //goals.Add(s1, 3);
 
         // Set up the subgoal "isFighting"
-        SubGoal s2 = new SubGoal(WorldState.Label.isPeaceful, 5, false);
+        //SubGoal s2 = new SubGoal(WorldState.Label.isPeaceful, 5, false);
         // Add it to the goals
-        goals.Add(s2, 5);
+        //goals.Add(s2, 5);
 
         //get hungry in a random time frame
         //Invoke("GetHungry", Random.Range(gameConfig.HungerFrequency-gameConfig.HungerVariance, gameConfig.HungerFrequency+gameConfig.HungerVariance));
         //Invoke("GetHungry", 10f);
         
-        SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
-        goals.Add(s3,10);
+        //SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, false);
+        //goals.Add(s3,10);
         
         
      
@@ -123,8 +123,25 @@ public class Pokemon : GAgent
             beliefs.ModifyState(WorldState.Label.hasFood, 1);
         }
     }
+    public virtual void SetViolence()
+    {
+    }
+
+    public void SetDefence()
+    {
+        SubGoal s = new SubGoal(WorldState.Label.isPeaceful, 5, true);
+        // Add it to the goals
+        goals.Add(s, 5);
+    }
+
     public void GetHungry() {
-        beliefs.ModifyState("isHungry", 0);
+        // Set up the subgoal "isFull"
+
+        SubGoal s1 = new SubGoal(WorldState.Label.isFull, 3, true);
+        // Add it to the goals
+        goals.Add(s1, 3);
+
+        beliefs.ModifyState(WorldState.Label.isHungry, 1);
         //call the get hungry method over and over at random times to make the Pokemon
         //get hungry again
         Debug.Log(gameObject.name+" is hungry");
@@ -137,9 +154,14 @@ public class Pokemon : GAgent
     public void SetStun(bool state) {
         if (state && !beliefs.HasState(WorldState.Label.isStunned))
         {
+            SubGoal s3 = new SubGoal(WorldState.Label.isRecovered, 10, true);
+            goals.Add(s3, 10);
+
             beliefs.ModifyState(WorldState.Label.isStunned, 0);
             anim.SetBool("isStunned", true);
             //transform.Rotate(new Vector3(0,0,90));
+
+            
         }
         else {
             beliefs.RemoveState(WorldState.Label.isStunned);
@@ -154,7 +176,7 @@ public class Pokemon : GAgent
     }
 
     public override void Interrupt() {
-        Debug.Log(gameObject.name + " interrupted; current action: "+ currentAction );
+        Debug.Log(gameObject.name + " interrupted action: "+ currentAction );
         base.Interrupt();
         
         string[] anims = {"isStunned", "isEating", "isWalking"};

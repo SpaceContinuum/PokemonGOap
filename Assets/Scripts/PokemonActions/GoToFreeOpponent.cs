@@ -67,8 +67,10 @@ public abstract class GoToFreeOpponent : GAction
         //other.SetOpponent(p);
         Debug.Log(gameObject.name + " attacking " + other.name + " for " + target.name);
         GWorld.Instance.PokemonFree2Fighting(gameObject);
-        other.beliefs.ModifyState(WorldState.Label.isDefensive, 1);
         other.Interrupt();
+        other.beliefs.ModifyState(WorldState.Label.isDefensive, 1);
+        other.SetDefence();
+        
         other.inventory.AddItem(gameObject);
 
         //p.SetOpponent(other);

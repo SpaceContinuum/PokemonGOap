@@ -10,6 +10,7 @@ public class Defend : GAction
     GameObject attacker;
     public override bool PostPerform()
     {
+        Debug.Log(name + " PostPerform Defense");
         if (beliefs.HasState(WorldState.Label.isStunned)) { //this means we lost
             GWorld.Instance.PokemonFighting2Stunned(gameObject);
         }
@@ -25,6 +26,7 @@ public class Defend : GAction
 
     public override bool PrePerform()
     {
+        Debug.Log(name + " PrePerform Defense");
         p = gameObject.GetComponent<Pokemon>();
         target = inventory.FindItemWithTag("Pokemon");
         if (target == null)

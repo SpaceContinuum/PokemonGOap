@@ -11,7 +11,8 @@ public class Fight : GAction
         p = GetComponent<Pokemon>();
     }
     public override bool PostPerform()
-    {        
+    {
+        Debug.Log(name + " PostPerform regular Fight");
         if (didWin) {
             GWorld.Instance.PokemonFighting2Free(gameObject);
             beliefs.RemoveState(WorldState.Label.isViolent);
@@ -33,7 +34,7 @@ public class Fight : GAction
         //combat resolution happens at start of the action, to ensure that everything is synced up.
         //If it happened in PostPerform, there's be a race condition between the Defender and the Attacker to do cleanup.
         // This way, the Attacker triggers all the cleanup actions.
-        
+        Debug.Log(name + " PrePerform regular Fight");
         target = inventory.FindItemWithTag("Pokemon");
         if (target == null)
         {
