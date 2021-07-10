@@ -7,8 +7,8 @@ public abstract class GoToEatingOpponent : GAction
 {
     protected Pokemon p;
     protected Pokemon.PokemonType myType;
-    protected Pokemon.PokemonType weaknessType;
-    protected Pokemon.PokemonType strengthType;
+    protected Pokemon.PokemonType myWeaknessType;
+    protected Pokemon.PokemonType myStrengthType;
     protected Pokemon.PokemonType targetType;
 
     public override float cost
@@ -20,7 +20,7 @@ public abstract class GoToEatingOpponent : GAction
             {
                 coef = 2;
             }
-            else if (targetType == strengthType)
+            else if (targetType == myStrengthType)
             {
                 coef = 0.8f;
             }
@@ -35,7 +35,7 @@ public abstract class GoToEatingOpponent : GAction
             if (p != null && path != null) {
                 agent.CalculatePath(p.transform.position, path);
 
-                //Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
+                //Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetMyPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
                 return coef*(PathLength(path));
             }
             return Mathf.Infinity;
@@ -45,7 +45,9 @@ public abstract class GoToEatingOpponent : GAction
     public override bool PostPerform()
     {
         Pokemon p = gameObject.GetComponent<Pokemon>();
-        Food f = target.GetComponent<Food>();
+        //Food f = target.GetComponent<Food>();
+        Pokemon p_target= target.GetComponent<Pokemon>();
+        Food f = p_target.inventory.FindItemWithTag("Food").GetComponent<Food>();
         Debug.Log(gameObject.name + " has reached pokemon to fight");
         
         if (target == null || f == null || f.owner == null)
@@ -54,29 +56,28 @@ public abstract class GoToEatingOpponent : GAction
         }
 
         //init fight with an available pokemon and remove both from availability
-        GameObject owner = f.owner;
         Debug.Log(gameObject.name + " initiated a fight with " + target.name);
         GWorld.Instance.PokemonFree2Fighting(gameObject);
 
-        Pokemon other = owner.GetComponent<Pokemon>();
-        if (other == null || other.GetOpponent() != null || p.GetOpponent() != null)
+        
+        if (p_target == null || p_target.GetOpponent() != null || p.GetOpponent() != null)
         {
-            Debug.Log(name + " trying to attack a non-pokemon " + owner.name);
+            Debug.Log(name + " trying to attack a non-pokemon " + target.name);
             target = null;
             return false;
         }
         //Declare attack on opponent
-        other.SetOpponent(p);
-        Debug.Log(gameObject.name + " attacking " + other.name + " for " + target.name);
-        other.beliefs.ModifyState("isDefensive", 1);
-        other.Interrupt();
-        other.inventory.AddItem(gameObject);
-        GWorld.Instance.PokemonEating2Fighting(owner);
+        p_target.SetOpponent(p);
+        Debug.Log(gameObject.name + " attacking " + p_target.name + " for " + target.name);
+        p_target.beliefs.ModifyState("isDefensive", 1);
+        p_target.Interrupt();
+        p_target.inventory.AddItem(gameObject);
+        GWorld.Instance.PokemonEating2Fighting(target);
 
-        p.SetOpponent(other);
+        p.SetOpponent(p_target);
         beliefs.ModifyState("attacking", 1);
         beliefs.ModifyState("attackingForFood", 1);
-        inventory.AddItem(other.gameObject);
+        inventory.AddItem(p_target.gameObject);
 
         return true;
 

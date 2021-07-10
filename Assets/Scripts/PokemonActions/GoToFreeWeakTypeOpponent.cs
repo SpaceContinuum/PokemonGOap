@@ -8,11 +8,13 @@ public class GoToFreeWeakTypeOpponent : GoToFreeOpponent
 
     public new void Start() {
         p = gameObject.GetComponent<Pokemon>();
-        myType = p.GetPokemonType();
-        weaknessType = p.GetWeaknessType();
-        strengthType = p.GetStrengthType();
+        myType = p.GetMyPokemonType();
+        myWeaknessType = p.GetMyWeaknessType();
+        myStrengthType = p.GetMyStrengthType();
 
-        targetType = strengthType;
+        //TODO: verify what this nmeeds to be
+        //targetType = strengthType;
+        targetType = myStrengthType;
 
     }
     public override void Reset()

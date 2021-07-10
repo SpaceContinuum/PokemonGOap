@@ -8,9 +8,9 @@ public class GoToEatingSameTypeOpponent : GoToEatingOpponent
 
     public new void Start() {
         p = gameObject.GetComponent<Pokemon>();
-        myType = p.GetPokemonType();
-        weaknessType = p.GetWeaknessType();
-        strengthType = p.GetStrengthType();
+        myType = p.GetMyPokemonType();
+        myWeaknessType = p.GetMyWeaknessType();
+        myStrengthType = p.GetMyStrengthType();
 
         targetType = myType;
 
@@ -19,11 +19,11 @@ public class GoToEatingSameTypeOpponent : GoToEatingOpponent
     {
         
         duration = 5;
-        actionName = "FindEatingeSameTypeOpponent";
+        actionName = "FindEatingSameTypeOpponent";
        
-        preConditions = new WorldState[2];
-        preConditions[0] = new WorldState("isViolent", 0);
-        preConditions[1] = new WorldState("eatingPokemon", 0);
+        preConditions = new WorldState[1];
+        //preConditions[0] = new WorldState("isViolent", 0);
+        preConditions[0] = new WorldState("eatingPokemon", 0);
         afterEffects = new WorldState[2];
         afterEffects[0] = new WorldState("attacking", 1);
         afterEffects[1] = new WorldState("attackingForFood", 1);

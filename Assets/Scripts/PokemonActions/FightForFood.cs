@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class FightForFood : Fight
 {
-    
+    public override bool PrePerform()
+    {
+        if (base.PrePerform())
+        {
+            //TODO: place this in belief instead of world state
+            GWorld.Instance.InterruptConsumeFood(target.GetComponent<Pokemon>().inventory.FindItemWithTag("Food"));
+            return true;
+        }
+        return false;
+    }
+
+
     public override void Reset()
     {
         base.Reset();
@@ -20,4 +31,7 @@ public class FightForFood : Fight
         afterEffects = afterNew;
         afterEffects[afterEffects.Length-1] = new WorldState(WorldState.Label.hasFood,0);
     }
+
+
+   
 }

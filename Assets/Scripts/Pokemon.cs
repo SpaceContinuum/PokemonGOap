@@ -80,17 +80,17 @@ public class Pokemon : GAgent
     }
 
     
-    public PokemonType GetPokemonType()
+    public PokemonType GetMyPokemonType()
     {
         return myType;
     }
 
-    public PokemonType GetWeaknessType()
+    public PokemonType GetMyWeaknessType()
     {
         return weaknessType;
     }
 
-    public PokemonType GetStrengthType()
+    public PokemonType GetMyStrengthType()
     {
         return strengthType;
     }
@@ -102,7 +102,7 @@ public class Pokemon : GAgent
 
     public bool IsWinning(Pokemon other)
     {
-        PokemonType otherType = other.GetPokemonType();
+        PokemonType otherType = other.GetMyPokemonType();
         if (otherType == strengthType)
         {
             return true;

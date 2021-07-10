@@ -7,8 +7,8 @@ public abstract class GoToFreeOpponent : GAction
 {
     protected Pokemon p;
     protected Pokemon.PokemonType myType;
-    protected Pokemon.PokemonType weaknessType;
-    protected Pokemon.PokemonType strengthType;
+    protected Pokemon.PokemonType myWeaknessType;
+    protected Pokemon.PokemonType myStrengthType;
     protected Pokemon.PokemonType targetType;
 
     public override float cost
@@ -20,7 +20,7 @@ public abstract class GoToFreeOpponent : GAction
             {
                 coef = 2;
             }
-            else if (targetType == strengthType)
+            else if (targetType == myStrengthType)
             {
                 coef = 1;
             }
@@ -34,7 +34,7 @@ public abstract class GoToFreeOpponent : GAction
             if (p != null && path != null) {
                 agent.CalculatePath(p.transform.position, path);
 
-                //Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
+                //Debug.Log(gameObject.name + " cost to attack " + p.name +"-" + p.GetMyPokemonType()+ ": "+coef+"\nTargetType = " +targetType.ToString() );
                 return coef*(PathLength(path));
             }
             return Mathf.Infinity;

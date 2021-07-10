@@ -205,15 +205,26 @@ public sealed class GWorld {
         world.ModifyState(WorldState.Label.availableFood, -1);
     }
 
-    public void FoodEaten2Fight(GameObject f)
+    /*public void FoodEaten2Fight(GameObject f)
     {
         MoveObjectFromTo(f, eatenFood, fightFood);
-    }
+    }*/
 
-    public void FoodFight2Eaten(GameObject f)
+    /*public void FoodFight2Eaten(GameObject f)
     {
         MoveObjectFromTo(f, fightFood, eatenFood);
+    }*/
+
+    /*public void FoodFight2Free(GameObject f)
+    {
+        MoveObjectFromTo(f, fightFood, freeFood);
+    }*/
+
+    public void FoodEaten2Free(GameObject f)
+    {
+        MoveObjectFromTo(f, eatenFood, freeFood);
     }
+    
 
     private GameObject GetClosestObject(GameObject obj, List<GameObject> ObjList, Pokemon.PokemonType ptype= Pokemon.PokemonType.NULL)
     {
@@ -241,7 +252,7 @@ public sealed class GWorld {
             {
                 if (o == obj)
                     continue;
-                if (o.GetComponent<Pokemon>().GetPokemonType() == ptype)
+                if (o.GetComponent<Pokemon>().GetMyPokemonType() == ptype)
                 {
                     float dist = Mathf.Abs(Vector3.Distance(o.transform.position, currentPos));
                     if (dist < minDistance)
@@ -325,7 +336,22 @@ public sealed class GWorld {
         }
         else if (eatenFood.Contains(f)) {
             eatenFood.Remove(f);
-            world.ModifyState(WorldState.Label.foodEaten, -1);
+            //world.ModifyState(WorldState.Label.foodEaten, -1);
+            GameObject.Destroy(f);
+        }
+        else Debug.Log("Trying to remove Food not currently in eatenFood");
+    }
+
+    public void InterruptConsumeFood(GameObject f)
+    {
+        if (f == null || f.GetComponent<Food>() == null)
+        {
+            Debug.Log("Trying to interrupt null object");
+        }
+        else if (eatenFood.Contains(f))
+        {
+            eatenFood.Remove(f);
+            FoodEaten2Free(f.gameObject);
             GameObject.Destroy(f);
         }
         else Debug.Log("Trying to remove Food not currently in eatenFood");

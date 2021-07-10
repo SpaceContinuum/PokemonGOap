@@ -24,7 +24,14 @@ public class GAgentVisualEditor : Editor {
         //be displayed
         GAgentVisual agent = (GAgentVisual)target;
         GUILayout.Label("Name: " + agent.name);
-        GUILayout.Label("Current Action: " + agent.gameObject.GetComponent<GAgent>().currentAction);
+        GAction gAction = agent.gameObject.GetComponent<GAgent>().currentAction;
+        string actionName = "";
+        if (gAction)
+        {
+            actionName = gAction.actionName;
+        }
+        //GUILayout.Label("Current Action: " + agent.gameObject.GetComponent<GAgent>().currentAction);
+        GUILayout.Label("Current Action: " + actionName);
         GUILayout.Label("Plan:");
         string planStr = "";
         GAction[] planArr = agent.gameObject.GetComponent<GAgent>().actionQueueToArray;

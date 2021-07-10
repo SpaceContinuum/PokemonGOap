@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 4169646707522145321}
   - component: {fileID: 6865779648086626675}
   - component: {fileID: 6725615171540266688}
+  - component: {fileID: 8899370966687963974}
+  - component: {fileID: 6641020464988795665}
   m_Layer: 0
   m_Name: Pokemon
   m_TagString: Pokemon
@@ -364,3 +366,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8899370966687963974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14b57175c9f3dd4ea8ea220dfc9079d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: FindEatingSameTypeOpponent
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: eatingPokemon
+    value: 0
+  afterEffects:
+  - key: attacking
+    value: 1
+  - key: attackingForFood
+    value: 1
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &6641020464988795665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919213213295577474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be4528935ec2ea4d951882c1697d8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 0}
+  gameController: {fileID: 0}
+  actionName: FindEatingWeakTypeOpponent
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: eatingPokemon
+    value: 0
+  afterEffects:
+  - key: attacking
+    value: 1
+  - key: attackingForFood
+    value: 1
+  agent: {fileID: 0}
+  running: 0

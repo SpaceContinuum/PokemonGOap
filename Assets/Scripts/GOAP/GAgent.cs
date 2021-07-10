@@ -136,8 +136,13 @@ public class GAgent : GBase {
             foreach (KeyValuePair<SubGoal, int> sg in sortedGoals) {
 
                 actionQueue = planner.plan(actions, sg.Key.sGoals, beliefs);
+                if (actionQueue == null)
+                {
+                    Debug.Log(name + " has no plan");
+                }
+                else
                 // If actionQueue is not = null then we must have a plan
-                if (actionQueue != null) {
+                {
 
                     // Set the current goal
                     currentGoal = sg.Key;

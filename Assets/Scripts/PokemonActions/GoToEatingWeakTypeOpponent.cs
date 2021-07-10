@@ -10,23 +10,24 @@ public class GoToEatingWeakTypeOpponent : GoToEatingOpponent
         
         
         p = gameObject.GetComponent<Pokemon>();
-        myType = p.GetPokemonType();
-        weaknessType = p.GetWeaknessType();
-        strengthType = p.GetStrengthType();
+        myType = p.GetMyPokemonType();
+        myWeaknessType = p.GetMyWeaknessType();
+        myStrengthType = p.GetMyStrengthType();
 
-        targetType = weaknessType;
+        targetType = myStrengthType;
+
     }
     public override void Reset()
     {
         
         duration = 5;
-        actionName = "FindEatingeWeakTypeOpponent";
+        actionName = "FindEatingWeakTypeOpponent";
        
 
-        preConditions = new WorldState[2];
+        preConditions = new WorldState[1];
         //preConditions[0] = new WorldState("availablePokemon", 0);
-        preConditions[0] = new WorldState(WorldState.Label.isViolent, 0);
-        preConditions[1] = new WorldState(WorldState.Label.eatingPokemon, 0);
+        //preConditions[0] = new WorldState(WorldState.Label.isViolent, 0);
+        preConditions[0] = new WorldState(WorldState.Label.eatingPokemon, 0);
         afterEffects = new WorldState[2];
         afterEffects[0] = new WorldState(WorldState.Label.attacking, 1);
         afterEffects[1] = new WorldState(WorldState.Label.attackingForFood, 1);
