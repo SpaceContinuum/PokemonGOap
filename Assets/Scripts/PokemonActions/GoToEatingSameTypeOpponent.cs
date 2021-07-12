@@ -15,6 +15,9 @@ public class GoToEatingSameTypeOpponent : GoToEatingOpponent
         targetType = myType;
 
     }
+
+ 
+
     public override void Reset()
     {
         

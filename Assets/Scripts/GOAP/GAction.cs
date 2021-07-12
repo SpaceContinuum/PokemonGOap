@@ -87,7 +87,7 @@ public abstract class GAction : GBase {
         beliefs = this.GetComponent<GAgent>().beliefs;
     }
 
-    public bool IsAchievable() {
+    public virtual bool IsAchievable() {
 
         return true;
     }

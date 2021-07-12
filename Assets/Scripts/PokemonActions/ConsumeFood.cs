@@ -10,6 +10,7 @@ public class ConsumeFood : GAction
         //release and destroy the food.
         GWorld.Instance.ConsumeFood(target); 
         beliefs.RemoveState(WorldState.Label.isHungry);
+        beliefs.RemoveState(WorldState.Label.hasFood);
         //beliefs.RemoveState(WorldState.Label.isEating);
         GWorld.Instance.PokemonEating2Free(gameObject);
         GetComponent<Pokemon>().anim.SetBool("isEating", false);

@@ -114,8 +114,10 @@ public class GAgent : GBase {
             //Interrupt the action if the target has been voided or destroyed.
             if (currentAction.target == null) {
                 Debug.Log(name+": My target is gone! I need a new plan.");
-                planner = null;
-                actionQueue = null;
+                Interrupt();
+                //planner = null;
+                //actionQueue = null;
+
             }
             else {
                 float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);

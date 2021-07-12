@@ -23,6 +23,7 @@ public class Fight : GAction
 
         }
 
+        p.SetOpponent(null);
         p.anim.SetBool("isFighting", false);
         beliefs.RemoveState(WorldState.Label.attacking);
         return true;

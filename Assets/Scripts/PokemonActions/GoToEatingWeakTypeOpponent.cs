@@ -17,6 +17,9 @@ public class GoToEatingWeakTypeOpponent : GoToEatingOpponent
         targetType = myStrengthType;
 
     }
+
+   
+
     public override void Reset()
     {
         

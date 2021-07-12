@@ -45,12 +45,18 @@ public abstract class GoToEatingOpponent : GAction
     public override bool PostPerform()
     {
         Pokemon p = gameObject.GetComponent<Pokemon>();
-        //Food f = target.GetComponent<Food>();
         Pokemon p_target= target.GetComponent<Pokemon>();
-        Food f = p_target.inventory.FindItemWithTag("Food").GetComponent<Food>();
+        GameObject obj_food = p_target.inventory.FindItemWithTag("Food");
+
+        if (obj_food == null || target == null)
+        {
+            return false;
+        }
+
+        Food f = obj_food.GetComponent<Food>();
         Debug.Log(gameObject.name + " has reached pokemon to fight");
         
-        if (target == null || f == null || f.owner == null)
+        if (f == null || f.owner == null)
         {
             return false;
         }
@@ -89,15 +95,22 @@ public abstract class GoToEatingOpponent : GAction
 
     public override bool PrePerform()
     {
-        target = GWorld.Instance.GetClosestEatingPokemon(gameObject, targetType).gameObject;
-        if (target == null)
+        if (gameObject != null && targetType != Pokemon.PokemonType.NULL)
         {
-            Debug.Log(gameObject.name + " couldn't find opponent");
-            return false;
+            target = GWorld.Instance.GetClosestEatingPokemon(gameObject, targetType).gameObject;
+            if (target != null)
+            {
+                GAction gAction = target.GetComponent<GAgent>().currentAction;
+                if (gAction && gAction.actionName == "ConsumeFood")
+                {
+                    Debug.Log(gameObject.name + " is going towards " + target.name);
+                    return true;
+                }
+            }
         }
-        Debug.Log(gameObject.name + " is going towards " + target.name);
-        
-        return true;
+
+        Debug.Log(gameObject.name + " couldn't find opponent");
+        return false;
     }
 
     public override void Reset()

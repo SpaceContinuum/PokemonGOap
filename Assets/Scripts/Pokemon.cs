@@ -180,14 +180,14 @@ public class Pokemon : GAgent
 
             beliefs.ModifyState(WorldState.Label.isStunned, 0);
             anim.SetBool("isStunned", true);
-            //transform.Rotate(new Vector3(0,0,90));
+            //transform.Rotate(new Vector3(0,-90,0));
 
             
         }
         else {
             beliefs.RemoveState(WorldState.Label.isStunned);
             anim.SetBool("isStunned", false);
-            //transform.Rotate(new Vector3(0,0,-90));
+            //transform.Rotate(new Vector3(0,-90,0));
         }
     }
 

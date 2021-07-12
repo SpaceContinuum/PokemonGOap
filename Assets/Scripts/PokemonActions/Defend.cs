@@ -20,6 +20,7 @@ public class Defend : GAction
             GWorld.Instance.PokemonFighting2Free(gameObject);
         }
 
+        p.SetOpponent(null);
         beliefs.RemoveState(WorldState.Label.isDefensive);
         p.anim.SetBool("isFighting", false);
         return true;
